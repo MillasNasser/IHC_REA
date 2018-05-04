@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Visualizer C programming Pointer</title>
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<header class="">
+		<div id="Inicio">
+			<button class="fLeft">Carregar exercicio</button>
+			<button class="fLeft">Registrar exercicio</button>
+		</div>
+		<div id="Meio">
+			<button class="fLeft">Voltar</button>
+			<button class="fLeft">Avançar</button>
+		</div>
+
+		<div id="Final">
+			<button class="fLeft">Resetar</button>
+		</div>
+	</header>
+	<div class="body">
+		<table>
+			<tr>
+				<td class="prettyprint">
+				</td>
+				<td>
+
+					<div class="fLeft">
+						<div class="w10">  1</div>
+						<div class="w10">  2</div>
+						<div class="w10">  3</div>
+						<div class="w10">  4</div>
+						<div class="w10">  5</div>
+						<div class="w10">  6</div>
+						<div class="w10">  7</div>
+						<div class="w10">  8</div>
+						<div class="w10">  9</div>
+						<div class="w10"> 10</div>
+						<div class="w10"> 11</div>
+						<div class="w10"> 12</div>
+						<div class="w10"> 13</div>
+						<div class="w10"> 14</div>
+						<div class="w10"> 15</div>
+						<div class="w10"> 16</div>
+						<div class="w10"> 17</div>
+						<div class="w10"> 18</div>
+						<div class="w10"> 19</div>
+						<div class="w10"> 20</div>
+						<div class="w10"> 21</div>
+						<div class="w10"> 22</div>
+						<div class="w10"> 23</div>
+						<div class="w10"> 24</div>
+						<div class="w10"> 25</div>
+						<div class="w10"> 26</div>
+						<div class="w10"> 27</div>
+					</div>
+
+					<div class="code flLeft">
+						<div id="L1" class="wLinha "><pre class="prettyprint">#include &lt;stdio.h></pre></div>
+						<div id="L2" class="wLinha "><pre class="prettyprint">#include &lt;stdlib.h></pre></div>
+						<div id="L3" class="wLinha "><pre class="prettyprint">void preencheVetor(int *vet, int size){</pre></div>
+						<div id="L4" class="wLinha "><pre class="prettyprint">	int i;</pre></div>
+						<div id="L5" class="wLinha "><pre class="prettyprint">	vet = (int*) malloc(sizeof(int) * size);</pre></div>
+						<div id="L6" class="wLinha "><pre class="prettyprint">	for(i=0; i < size; i++){</pre></div>
+						<div id="L7" class="wLinha "><pre class="prettyprint">		vet[i] = i;</pre></div>
+						<div id="L8" class="wLinha "><pre class="prettyprint">	}</pre></div>
+						<div id="L9" class="wLinha "><pre class="prettyprint">	for(i=0; i < size; i++){</pre></div>
+						<div id="L10" class="wLinha "><pre class="prettyprint">		printf("%d ",vet[i]);</pre></div>
+						<div id="L11" class="wLinha "><pre class="prettyprint">	}</pre></div>
+						<div id="L12" class="wLinha "><pre class="prettyprint">	printf("\n");</pre></div>
+						<div id="L13" class="wLinha "><pre class="prettyprint">}</pre></div>
+						<div id="L14" class="wLinha "><pre class="prettyprint">int main(){</pre></div>
+						<div id="L15" class="wLinha "><pre class="prettyprint">	int i;</pre></div>
+						<div id="L16" class="wLinha "><pre class="prettyprint">	int size = 5;</pre></div>
+						<div id="L17" class="wLinha "><pre class="prettyprint">	int *vetor;</pre></div>
+						<div id="L18" class="wLinha "><pre class="prettyprint">	</pre></div>
+						<div id="L19" class="wLinha ativo"><pre class="prettyprint">	preencheVetor(vetor, size);</pre></div>
+						<div id="L20" class="wLinha "><pre class="prettyprint">	</pre></div>
+						<div id="L21" class="wLinha "><pre class="prettyprint">	printf("Antes do for\n");</pre></div>
+						<div id="L22" class="wLinha "><pre class="prettyprint">	for(i=0; i < size; i++){</pre></div>
+						<div id="L23" class="wLinha "><pre class="prettyprint">		printf("%d ",vetor[i]);</pre></div>
+						<div id="L24" class="wLinha "><pre class="prettyprint">	}</pre></div>
+						<div id="L25" class="wLinha "><pre class="prettyprint">	printf("Depois do for\n");</pre></div>
+						<div id="L26" class="wLinha "><pre class="prettyprint">	return 0;</pre></div>
+						<div id="L27" class="wLinha "><pre class="prettyprint">}</pre></div>
+					</div>
+				</td>
+				<td valign="top">
+					<div class="Memory">
+						<table class="tg">
+							<tr>
+								<th class="">Endereço</th>
+								<th class="">Nome do endereço</th>
+								<th class="">Valor</th>
+								<th class="">Valor desreferenciado</th>
+							</tr>
+							<tr>
+								<td class="">0x000000</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000004</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000008</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x00000C</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000010</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000014</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000018</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x00001C</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000020</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000024</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000028</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x00002C</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000030</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000034</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x000038</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+							<tr>
+								<td class="">0x00003C</td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+								<td class=""><input type="text"></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+		
+	</div>
+	<pre class="code">
+		<code>first line</code>
+		<code>   indented line folasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdfolasdlowed by empty line</code>
+		<code></code>
+		<code>the following line consists of one single space</code>
+		<code> </code>
+		<code>this line has a space at the end </code>
+		<code>&#9;and one leading and ending tab&#9;</code>
+		<code>fill to</code>
+		<code>ten</code>
+		<code>lines</code>
+	</pre>
+</body>
+</html>
