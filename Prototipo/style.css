@@ -1,52 +1,34 @@
-.w10{
-	width:3vw;
-	
-	background-color: #aaa;
-	height: 15px;
-	padding: 2px;
-}
-
-pre{
+pre.prettyprint, .Numbers, .Code{
 	padding: 0;
 	margin: 0;
-}
-
-.wLinha{
-	width: 40vw;
-}
-
-.code{
-	background-color: #CCC;
-	overflow-x: scroll;
-}
-
-.ativo{
-	background-color: #FF0000;
-}
-
-pre.prettyprint{
 	border: none;
 }
 
-.fLeft{
+.Numbers{
 	float: left;
+	background-color: #555;
+	color: beige;
 }
 
-pre.code {
-	overflow-x: scroll;
-	white-space: pre-wrap;
+.Numbers div{
+	font-family: monospace;
+	text-align: right;
+	
+	padding: 0 0.2em 0 0.5em;
 }
-pre.code:before {
-	counter-reset: listing;
+
+.Code{
+	background-color: #DDD;
 }
-pre.code code {
-	counter-increment: listing;
+
+.Code pre{
+	padding-left: 2.1em;
 }
-pre.code code::before {
-	content: counter(listing) ". ";
-	display: inline-block;
-	width: 8em;         /* doesn't work */
-	padding-left: auto; /* doesn't work */
-	margin-left: auto;  /* doesn't work */
-	text-align: right;  /* doesn't work */
+
+.LinhaAtiva{
+	background: coral;
+}
+.L20{
+	color: coral;
+	background-color: #333;
 }
