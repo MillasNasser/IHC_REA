@@ -4,6 +4,15 @@ pre.prettyprint, .Numbers, .Code{
 	border: none;
 }
 
+.Content, .Button-Group{
+	display: flex;
+}
+
+.Code, .Memory{
+	width: 50vw;
+	overflow: auto;
+}
+
 .Numbers{
 	float: left;
 	background-color: #555;
@@ -19,16 +28,15 @@ pre.prettyprint, .Numbers, .Code{
 
 .Code{
 	background-color: #DDD;
+	padding-left: 0.5em;
 }
 
-.Code pre{
-	padding-left: 2.1em;
-}
 
-.LinhaAtiva{
+/* Linhas ativas */
+.Code pre.Ativo{
 	background: coral;
 }
-.L20{
+.Numbers div.Ativo{
 	color: coral;
 	background-color: #333;
 }

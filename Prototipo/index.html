@@ -2,199 +2,199 @@
 <html>
 <head>
 	<title>Visualizer C programming Pointer</title>
+	<!-- Pretty Print -->
 	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+	<!-- Bootstrap 4.0 -->
+	<!--
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	-->
+	<!-- CSS  -->
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<header class="">
-		<div id="Inicio">
+	<header class="Button-Group">
+		<div class="float-L">
 			<button class="">Carregar exercicio</button>
 			<button class="">Registrar exercicio</button>
 		</div>
-		<div id="Meio">
+		<div class="float-C">
 			<button class="">Voltar</button>
 			<button class="">Avançar</button>
 		</div>
 
-		<div id="Final">
+		<div class="float-R">
 			<button class="">Resetar</button>
 		</div>
 	</header>
-	<div class="">
-		<table>
+	<div class="Content">
+		<div class="Numbers">
+			<div class="">  1</div>
+			<div class="">  2</div>
+			<div class="">  3</div>
+			<div class="">  4</div>
+			<div class="">  5</div>
+			<div class="">  6</div>
+			<div class="">  7</div>
+			<div class="">  8</div>
+			<div class="">  9</div>
+			<div class=""> 10</div>
+			<div class=""> 11</div>
+			<div class=""> 12</div>
+			<div class=""> 13</div>
+			<div class=""> 14</div>
+			<div class=""> 15</div>
+			<div class=""> 16</div>
+			<div class=""> 17</div>
+			<div class=""> 18</div>
+			<div class=""> 19</div>
+			<div class="Ativo"> 20</div>
+			<div class=""> 21</div>
+			<div class=""> 22</div>
+			<div class=""> 23</div>
+			<div class=""> 24</div>
+			<div class=""> 25</div>
+			<div class=""> 26</div>
+			<div class=""> 27</div>
+			<div class=""> 28</div>
+		</div>
+		
+		<div class="Code">
+			<pre class="prettyprint">#include &lt;stdio.h&gt;</pre>
+			<pre class="prettyprint">#include &lt;stdlib.h&gt;</pre>
+			<pre class="prettyprint">void preencheVetor(int *vet, int size){</pre>
+			<pre class="prettyprint">	int i;</pre>
+			<pre class="prettyprint">	vet = (int*) malloc(sizeof(int) * size);######################## ################################## ##########################</pre>
+			<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
+			<pre class="prettyprint">		vet[i] = i;</pre>
+			<pre class="prettyprint">	}</pre>
+			<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
+			<pre class="prettyprint">		printf("%d ",vet[i]);</pre>
+			<pre class="prettyprint">	}</pre>
+			<pre class="prettyprint">	printf("\n");</pre>
+			<pre class="prettyprint">}</pre>
+			<pre class="prettyprint"> </pre>
+			<pre class="prettyprint">int main(){</pre>
+			<pre class="prettyprint">	int i;</pre>
+			<pre class="prettyprint">	int size = 5;</pre>
+			<pre class="prettyprint">	int *vetor;</pre>
+			<pre class="prettyprint">	</pre>
+			<pre class="prettyprint Ativo">	preencheVetor(vetor, size);</pre>
+			<pre class="prettyprint">	</pre>
+			<pre class="prettyprint">	printf("Antes do for\n");</pre>
+			<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
+			<pre class="prettyprint">		printf("%d ",vetor[i]);</pre>
+			<pre class="prettyprint">	}</pre>
+			<pre class="prettyprint">	printf("Depois do for\n");</pre>
+			<pre class="prettyprint">	return 0;</pre>
+			<pre class="prettyprint">}</pre>
+		</div>
+	</td>	
+
+	<div class="Memory">
+		<table class="">
 			<tr>
-				<td>
-
-					<div class="Numbers">
-						<div class="L1">  1</div>
-						<div class="L2">  2</div>
-						<div class="L3">  3</div>
-						<div class="L4">  4</div>
-						<div class="L5">  5</div>
-						<div class="L6">  6</div>
-						<div class="L7">  7</div>
-						<div class="L8">  8</div>
-						<div class="L9">  9</div>
-						<div class="L10"> 10</div>
-						<div class="L11"> 11</div>
-						<div class="L12"> 12</div>
-						<div class="L13"> 13</div>
-						<div class="L14"> 14</div>
-						<div class="L15"> 15</div>
-						<div class="L16"> 16</div>
-						<div class="L17"> 17</div>
-						<div class="L18"> 18</div>
-						<div class="L19"> 19</div>
-						<div class="L20"> 20</div>
-						<div class="L21"> 21</div>
-						<div class="L22"> 22</div>
-						<div class="L23"> 23</div>
-						<div class="L24"> 24</div>
-						<div class="L25"> 25</div>
-						<div class="L26"> 26</div>
-						<div class="L27"> 27</div>
-						<div class="L27"> 28</div>
-					</div>
-
-					<div class="Code">
-						<pre class="prettyprint">#include &lt;stdio.h&gt;</pre>
-						<pre class="prettyprint">#include &lt;stdlib.h&gt;</pre>
-						<pre class="prettyprint">void preencheVetor(int *vet, int size){</pre>
-						<pre class="prettyprint">	int i;</pre>
-						<pre class="prettyprint">	vet = (int*) malloc(sizeof(int) * size);</pre>
-						<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
-						<pre class="prettyprint">		vet[i] = i;</pre>
-						<pre class="prettyprint">	}</pre>
-						<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
-						<pre class="prettyprint">		printf("%d ",vet[i]);</pre>
-						<pre class="prettyprint">	}</pre>
-						<pre class="prettyprint">	printf("\n");</pre>
-						<pre class="prettyprint">}</pre>
-						<pre class="prettyprint"> </pre>
-						<pre class="prettyprint">int main(){</pre>
-						<pre class="prettyprint">	int i;</pre>
-						<pre class="prettyprint">	int size = 5;</pre>
-						<pre class="prettyprint">	int *vetor;</pre>
-						<pre class="prettyprint">	</pre>
-						<pre class="prettyprint LinhaAtiva">	preencheVetor(vetor, size);</pre>
-						<pre class="prettyprint">	</pre>
-						<pre class="prettyprint">	printf("Antes do for\n");</pre>
-						<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
-						<pre class="prettyprint">		printf("%d ",vetor[i]);</pre>
-						<pre class="prettyprint">	}</pre>
-						<pre class="prettyprint">	printf("Depois do for\n");</pre>
-						<pre class="prettyprint">	return 0;</pre>
-						<pre class="prettyprint">}</pre>
-					</div>
-				</td>
-				<td valign="top">
-					<div class="Memory">
-						<table class="tg">
-							<tr>
-								<th class="">Endereço</th>
-								<th class="">Nome do endereço</th>
-								<th class="">Valor</th>
-								<th class="">Valor desreferenciado</th>
-							</tr>
-							<tr>
-								<td class="">0x000000</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000004</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000008</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x00000C</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000010</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000014</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000018</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x00001C</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000020</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000024</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000028</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x00002C</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000030</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000034</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x000038</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-							<tr>
-								<td class="">0x00003C</td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-								<td class=""><input type="text"></td>
-							</tr>
-						</table>
-					</div>
-				</td>
+				<th class="">Endereço</th>
+				<th class="">Nome do endereço</th>
+				<th class="">Valor</th>
+				<th class="">Valor desreferenciado</th>
+			</tr>
+			<tr>
+				<td class="">0x000000</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000004</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000008</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x00000C</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000010</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000014</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000018</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x00001C</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000020</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000024</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000028</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x00002C</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000030</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000034</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x000038</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+			</tr>
+			<tr>
+				<td class="">0x00003C</td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
+				<td class=""><input type="text"></td>
 			</tr>
 		</table>
 	</div>
