@@ -1,0 +1,37 @@
+{
+	"instruções": [
+		{
+			"texto": "int x = 5;",
+			"requisitos": [
+				{
+					"descrição": "",
+					"nome": "x",
+					"valor": "5",
+					"desreferenciado": false
+				}
+			]
+		},
+		{
+			"texto": "int *p;",
+			"requisitos": [
+				{
+					"descrição": "exemplo de ponteiros 1",
+					"nome": "p",
+					"valor": "",
+					"desreferenciado": ""
+				}
+			]
+		},
+		{
+			"texto": "p = &x;",
+			"requisitos": [
+				{
+					"descrição": "exemplo de ponteiros 1",
+					"nome": "p",
+					"valor": "x",
+					"desreferenciado": "5"
+				}
+			]
+		}
+	]
+}

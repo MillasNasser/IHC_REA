@@ -14,6 +14,7 @@ void preencheVetor(int *vet, int size){
 }
 
 int main(){
+	char c = 'c';
 	int i;
 	int size = 5;
 	int *vetor;

@@ -1,0 +1,37 @@
+{
+	"instruções": [
+		{
+			"texto": "int x = 5;",
+			"requisitos": [
+				{
+					"descrição": "",
+					"nome": "x",
+					"ponteiro": false,
+					"valor": "5"
+				}
+			]
+		},
+		{
+			"texto": "int *p;",
+			"requisitos": [
+				{
+					"descrição": "exemplo de ponteiros 2",
+					"nome": "p",
+					"ponteiro": true,
+					"valor": ""
+				}
+			]
+		},
+		{
+			"texto": "p = &x;",
+			"requisitos": [
+				{
+					"descrição": "exemplo de ponteiros 2",
+					"nome": "p",
+					"ponteiro": true,
+					"valor": "x"
+				}
+			]
+		}
+	]
+}

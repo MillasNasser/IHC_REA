@@ -1,0 +1,159 @@
+{
+	"instruções": [
+		{
+			"texto": "#include <stdio.h>",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "#include <stdlib.h>",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "void preencheVetor(int *vet, int size){",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    int i;",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    vet = (int*) malloc(sizeof(int) * size);",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    for(i=0; i < size; i++){",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "        vet[i] = i;",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    }",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    for(i=0; i < size; i++){",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "        printf(\"%d \",vet[i]);",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    }",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    printf(\"\n\");",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "}",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "int main(){",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    char c = 'c';",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    int i;",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    int size = 5;",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    int *vetor;",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    ",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    preencheVetor(vetor, size);",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    ",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    printf(\"Antes do for\n\");",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    for(i=0; i < size; i++){",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "        printf(\"%d \",vetor[i]);",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    }",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    printf(\"Depois do for\n\");",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "    return 0;",
+			"requisitos": [
+			]
+		},
+		{
+			"texto": "}",
+			"requisitos": [
+			]
+		}
+	]
+}
