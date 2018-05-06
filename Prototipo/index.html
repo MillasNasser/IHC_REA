@@ -4,54 +4,21 @@
 	<title>Visualizador de Ponteiros</title>
 	<!-- Pretty Print -->
 	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+	<script src="scripts/prototipe.js"></script>
 
-	<!-- Bootstrap 4.0 -->
-	<!--
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	-->
-	<!-- CSS  -->
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body onload="TabelaEnderecos(5)">
+<body onload="Start(30, 25)">
 	<header class="Button-Group">
 			<a href="#">Carregar exercicio</a>
 			<a href="#">Registrar exercicio</a>
-			<a href="#">Avançar</a>
-			<a href="#">Voltar</a>
-			<a href="#" class="float-R">Resetar</a>
+			<a href="#" class="glyphicon glyphicon-chevron-left">Voltar</a>
+			<a href="#">Avançar <span class="glyphicon glyphicon-chevron-right"></span></a>
+			<a href="#" class="float-R glyphicon glyphicon-repeat" ></span></a>
 	</header>
 	<div class="Content">
-		<div class="Numbers Dark-Base">
-			<div class="">  1</div>
-			<div class="">  2</div>
-			<div class="">  3</div>
-			<div class="">  4</div>
-			<div class="">  5</div>
-			<div class="">  6</div>
-			<div class="">  7</div>
-			<div class="">  8</div>
-			<div class="">  9</div>
-			<div class=""> 10</div>
-			<div class=""> 11</div>
-			<div class=""> 12</div>
-			<div class=""> 13</div>
-			<div class=""> 14</div>
-			<div class=""> 15</div>
-			<div class=""> 16</div>
-			<div class=""> 17</div>
-			<div class=""> 18</div>
-			<div class=""> 19</div>
-			<div class="Ativo"> 20</div>
-			<div class=""> 21</div>
-			<div class=""> 22</div>
-			<div class=""> 23</div>
-			<div class=""> 24</div>
-			<div class=""> 25</div>
-			<div class=""> 26</div>
-			<div class=""> 27</div>
-			<div class=""> 28</div>
-		</div>
+		<div id="LineNumbers" class="Numbers Dark-Base"></div>
 		
 		<div class="Code">
 			<pre class="prettyprint">#include &lt;stdio.h&gt;</pre>
@@ -73,7 +40,7 @@
 			<pre class="prettyprint">	int size = 5;</pre>
 			<pre class="prettyprint">	int *vetor;</pre>
 			<pre class="prettyprint">	</pre>
-			<pre class="prettyprint Ativo">	preencheVetor(vetor, size);</pre>
+			<pre class="prettyprint">	preencheVetor(vetor, size);</pre>
 			<pre class="prettyprint">	</pre>
 			<pre class="prettyprint">	printf("Antes do for\n");</pre>
 			<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
@@ -85,19 +52,13 @@
 		</div>
 	</td>	
 
-	<div class="Memory">
-		<div id="Endereco" class="Dark-Base wTabl"><div>Endereço</div></div>
-		<div id="NomeEndereco" class=" wTabl"><div>Nome do Endereço</div></div>
-		<div id="Valor" class=" wTabl"><div>Valor</div></div>
-		<div id="ValorDesref" class=" wTabl"><div>Valor Desreferenciado</div></div>
+	<div id="MemTabl" class="Memory Light-Base">
+		<div class="MemHeader Dark-Base">
+			<div class="MCol1">Endereço</div>
+			<div class="MCol2">Nome do Endereço</div>
+			<div class="MCol3">Valor</div>
+			<div class="MCol4">Valor Desreferenciado</div>
+		</div>
 	</div>
 </body>
 </html>
-<script>
-	function TabelaEnderecos(qnt){
-		for (let i = 0; i < qnt; i++) {
-			document.getElementById("Endereco").innerHTML += "<div class=' wTabl'> 0x0000000"+i+"</div>";
-			document.getElementById("NomeEndereco").innerHTML += "<div class=' wTabl'> 0x0000000"+i+"</div>";
-		}
-	}
-</script>

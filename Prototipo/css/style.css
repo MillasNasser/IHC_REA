@@ -6,24 +6,24 @@
 	}
 
 	.Code, .Memory{
-		width: 50vw;
+		width: 45vw;
 		overflow: auto;
 	}
 
-	.Content, .Memory{
-		display: flex;
-	}
 
-	.Endereco > :first-child, 
-	.NomeEndereco > :first-child, 
-	.Valor > :first-child, 
-	.ValorDesref > :first-child{
-		font-weight: bold;
-	}
+
 /* Classes Base*/
 	.Content{
+		display: flex;
 		margin-top: 4em;
 		margin-left: 1em;
+	}
+
+	.Memory{
+		overflow: auto;
+		width: 45vw;
+		border-top-right-radius: 0.3cm;
+		border-bottom-right-radius: 0.3cm;
 	}
 
 	.Numbers{
@@ -34,6 +34,7 @@
 
 	.Code{
 		background-color: #DDD;
+		margin-right: 0.5em;
 	}
 
 	.Button-Group{
@@ -41,10 +42,6 @@
 		top: 0;
 		position: fixed;
 		width: 100%;
-	}
-
-	.wTabl{
-		margin-right: 1em;
 	}
 
 /*Filhos das classes*/
@@ -67,6 +64,7 @@
 		padding: 14px 16px;
 		text-decoration: none;
 		font-size: 17px;
+		height: 1em;
 	}
 
 	.Button-Group a:hover{
@@ -87,8 +85,12 @@
 	}
 
 	.Dark-Base{
-		background-color: #555;
+		background-color: #333;
 		color: beige;
+	}
+
+	.Light-Base{
+		background-color: #DDD;
 	}
 
 /* Linhas ativas */
@@ -98,4 +100,42 @@
 	.Numbers div.Ativo{
 		color: coral;
 		background-color: #333;
+	}
+
+/* Tabela de Memória */
+	.MemHeader{
+		font-weight: bold;
+	}
+
+	.MemBody, .MemHeader{
+		display: flex;
+	}
+
+	.MCol1{
+		width: 5em;
+		padding-left: 0.5em;
+	}
+
+	.MCol2, .MCol2 input{
+		width: 9em;
+	}
+
+	.MCol3, .MCol3 input{
+		width: 5em;
+	}
+
+	.MCol4, .MCol4 input{
+		width: 10em;
+	}
+
+	.MCol2 input, .MCol3 input, .MCol4 input{
+		display: block;
+		margin: 0 auto;
+		border-width: 0 0 0.1em 0;
+		border-style: solid;
+		background-color: inherit;
+	}
+
+	.MCol2 input:focus, .MCol3 input:focus, .MCol4 input:focus{
+		outline: none;
 	}
