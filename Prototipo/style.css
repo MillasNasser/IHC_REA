@@ -1,42 +1,101 @@
-pre.prettyprint, .Numbers, .Code{
-	padding: 0;
-	margin: 0;
-	border: none;
-}
+/* Compartilhados */
+	pre.prettyprint, .Numbers, .Code, .Button-Group, body{
+		padding: 0;
+		margin: 0;
+		border: none;
+	}
 
-.Content, .Button-Group{
-	display: flex;
-}
+	.Code, .Memory{
+		width: 50vw;
+		overflow: auto;
+	}
 
-.Code, .Memory{
-	width: 50vw;
-	overflow: auto;
-}
+	.Content, .Memory{
+		display: flex;
+	}
 
-.Numbers{
-	float: left;
-	background-color: #555;
-	color: beige;
-}
+	.Endereco > :first-child, 
+	.NomeEndereco > :first-child, 
+	.Valor > :first-child, 
+	.ValorDesref > :first-child{
+		font-weight: bold;
+	}
+/* Classes Base*/
+	.Content{
+		margin-top: 4em;
+		margin-left: 1em;
+	}
 
-.Numbers div{
-	font-family: monospace;
-	text-align: right;
-	
-	padding: 0 0.2em 0 0.5em;
-}
+	.Numbers{
+		float: left;
+		border-top-left-radius: 0.3cm;
+		border-bottom-left-radius: 0.3cm;
+	}
 
-.Code{
-	background-color: #DDD;
-	padding-left: 0.5em;
-}
+	.Code{
+		background-color: #DDD;
+	}
 
+	.Button-Group{
+		background-color: #333;
+		top: 0;
+		position: fixed;
+		width: 100%;
+	}
+
+	.wTabl{
+		margin-right: 1em;
+	}
+
+/*Filhos das classes*/
+	.Numbers div{
+		font-family: monospace;
+		text-align: right;
+		
+		padding: 0 0.2em 0 0.5em;
+	}
+
+	.Code pre::before{
+		content: " "
+	}
+
+	.Button-Group a{
+		float: left;
+		display: block;
+		color: #f2f2f2;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 17px;
+	}
+
+	.Button-Group a:hover{
+		background-color: #DDD;
+		color: #333;	
+	}
+
+/* Uteis */
+	.float-L{
+		float: left !important;
+	}
+
+	.float-C{
+	}
+
+	.float-R{
+		float: right !important;
+	}
+
+	.Dark-Base{
+		background-color: #555;
+		color: beige;
+	}
 
 /* Linhas ativas */
-.Code pre.Ativo{
-	background: coral;
-}
-.Numbers div.Ativo{
-	color: coral;
-	background-color: #333;
-}
+	.Code pre.Ativo{
+		background: coral;
+	}
+	.Numbers div.Ativo{
+		color: coral;
+		background-color: #333;
+	}

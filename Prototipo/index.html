@@ -13,23 +13,16 @@
 	<!-- CSS  -->
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body onload="TabelaEnderecos(5)">
 	<header class="Button-Group">
-		<div class="float-L">
-			<button class="">Carregar exercicio</button>
-			<button class="">Registrar exercicio</button>
-		</div>
-		<div class="float-C">
-			<button class="">Voltar</button>
-			<button class="">Avançar</button>
-		</div>
-
-		<div class="float-R">
-			<button class="">Resetar</button>
-		</div>
+			<a href="#">Carregar exercicio</a>
+			<a href="#">Registrar exercicio</a>
+			<a href="#">Avançar</a>
+			<a href="#">Voltar</a>
+			<a href="#" class="float-R">Resetar</a>
 	</header>
 	<div class="Content">
-		<div class="Numbers">
+		<div class="Numbers Dark-Base">
 			<div class="">  1</div>
 			<div class="">  2</div>
 			<div class="">  3</div>
@@ -65,7 +58,7 @@
 			<pre class="prettyprint">#include &lt;stdlib.h&gt;</pre>
 			<pre class="prettyprint">void preencheVetor(int *vet, int size){</pre>
 			<pre class="prettyprint">	int i;</pre>
-			<pre class="prettyprint">	vet = (int*) malloc(sizeof(int) * size);######################## ################################## ##########################</pre>
+			<pre class="prettyprint">	vet = (int*) malloc(sizeof(int) * size);</pre>
 			<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
 			<pre class="prettyprint">		vet[i] = i;</pre>
 			<pre class="prettyprint">	}</pre>
@@ -93,110 +86,18 @@
 	</td>	
 
 	<div class="Memory">
-		<table class="">
-			<tr>
-				<th class="">Endereço</th>
-				<th class="">Nome do endereço</th>
-				<th class="">Valor</th>
-				<th class="">Valor desreferenciado</th>
-			</tr>
-			<tr>
-				<td class="">0x000000</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000004</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000008</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x00000C</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000010</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000014</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000018</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x00001C</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000020</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000024</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000028</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x00002C</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000030</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000034</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x000038</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-			<tr>
-				<td class="">0x00003C</td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-				<td class=""><input type="text"></td>
-			</tr>
-		</table>
+		<div id="Endereco" class="Dark-Base wTabl"><div>Endereço</div></div>
+		<div id="NomeEndereco" class=" wTabl"><div>Nome do Endereço</div></div>
+		<div id="Valor" class=" wTabl"><div>Valor</div></div>
+		<div id="ValorDesref" class=" wTabl"><div>Valor Desreferenciado</div></div>
 	</div>
 </body>
 </html>
+<script>
+	function TabelaEnderecos(qnt){
+		for (let i = 0; i < qnt; i++) {
+			document.getElementById("Endereco").innerHTML += "<div class=' wTabl'> 0x0000000"+i+"</div>";
+			document.getElementById("NomeEndereco").innerHTML += "<div class=' wTabl'> 0x0000000"+i+"</div>";
+		}
+	}
+</script>
