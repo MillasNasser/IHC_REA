@@ -4,14 +4,15 @@
 	<title>Visualizador de Ponteiros</title>
 	<!-- Pretty Print -->
 	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+	
 	<script src="scripts/prototipe.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body onload="Start(30, 25)">
+<body onload="Start(1, 25)">
 	<header class="Button-Group">
-			<a href="#">Carregar exercicio</a>
+			<a href="#" class="Load">Carregar exercicio<input type="file" onchange="openFile(event)"></a>
 			<a href="#">Registrar exercicio</a>
 			<a href="#" class="glyphicon glyphicon-chevron-left">Voltar</a>
 			<a href="#">Avançar <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -19,37 +20,7 @@
 	</header>
 	<div class="Content">
 		<div id="LineNumbers" class="Numbers Dark-Base"></div>
-		
-		<div class="Code">
-			<pre class="prettyprint">#include &lt;stdio.h&gt;</pre>
-			<pre class="prettyprint">#include &lt;stdlib.h&gt;</pre>
-			<pre class="prettyprint">void preencheVetor(int *vet, int size){</pre>
-			<pre class="prettyprint">	int i;</pre>
-			<pre class="prettyprint">	vet = (int*) malloc(sizeof(int) * size);</pre>
-			<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
-			<pre class="prettyprint">		vet[i] = i;</pre>
-			<pre class="prettyprint">	}</pre>
-			<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
-			<pre class="prettyprint">		printf("%d ",vet[i]);</pre>
-			<pre class="prettyprint">	}</pre>
-			<pre class="prettyprint">	printf("\n");</pre>
-			<pre class="prettyprint">}</pre>
-			<pre class="prettyprint"> </pre>
-			<pre class="prettyprint">int main(){</pre>
-			<pre class="prettyprint">	int i;</pre>
-			<pre class="prettyprint">	int size = 5;</pre>
-			<pre class="prettyprint">	int *vetor;</pre>
-			<pre class="prettyprint">	</pre>
-			<pre class="prettyprint">	preencheVetor(vetor, size);</pre>
-			<pre class="prettyprint">	</pre>
-			<pre class="prettyprint">	printf("Antes do for\n");</pre>
-			<pre class="prettyprint">	for(i=0; i < size; i++){</pre>
-			<pre class="prettyprint">		printf("%d ",vetor[i]);</pre>
-			<pre class="prettyprint">	}</pre>
-			<pre class="prettyprint">	printf("Depois do for\n");</pre>
-			<pre class="prettyprint">	return 0;</pre>
-			<pre class="prettyprint">}</pre>
-		</div>
+		<div id="Code" class="Code"></div>
 	</td>	
 
 	<div id="MemTabl" class="Memory Light-Base">
