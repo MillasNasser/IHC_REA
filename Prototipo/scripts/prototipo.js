@@ -154,3 +154,59 @@ function openFile(event) {
 	   Ela está sendo chamada para ler Texto*/
 	reader.readAsText(file);
 };
+
+/* TODO: Criar a função que salva os valores recebidos*/
+function saveTable(){
+	var table = loadTableData();
+	console.log(table);
+}
+
+/* TODO: Otimizar a função deixando-a genérica e legivel*/
+/* Função que transforma os dados da tabela em JSON */
+function loadTableData() {
+	/* JSON da tabela */
+	var tableJSON = [[]];
+
+	/* Lista das possiveis colunas da tabela*/
+	var cols = [];
+
+	/* Cabeçalho da tabela */
+	var tableHeader = document.getElementsByClassName("MemHeader")[0];
+	/* Para cada coluna do cabeçalho, pegue todos os filhos e adicione a coluna correspondente*/
+	for(let i = 0; i < tableHeader.children.length; i++){
+		cols[i] = document.getElementsByClassName("MCol"+(i+1));
+	}
+
+	/* Para cada linha da tabela crie um array no JSON */
+	for(let i = 1; i < cols[0].length; i++){
+		var empty = 0;	/* Variavel que vê colunas vazias*/
+		var values = [];/* Variavel que captura os valores*/
+		/* Para cada uma das colunas, capture o respectivo valor e adicione a values */
+		for(let j = 0; j < cols.length; j++){
+			if(j == 0){ /* Endereço é valor direto no html*/
+				values[j] = cols[j][i].innerHTML;
+			}else{ /* Outras colunas possuem um filho input */
+				values[j] = cols[j][i].children[0].value;
+				/* contando colunas vazias */
+				empty += values[j] == 0 ? 1: 0; 
+			}
+		}
+		/* Guarda o index de referencia do atributo JSON */
+		var index = values[0]; //Endereço
+		
+		/* Se houver determinada quantidade de colunas vazias, não insere no JSON 
+			É cols.length-1, pois Endereço nunca é vazio*/
+		if(empty >= (cols.length-1))continue;
+
+		/* Cria a linha do JSON com o nome da variável */
+		tableJSON[index] = {};
+		/* Adiciona todos os outros valores a linha */
+		for(let j = 0; j < cols.length; j++){
+			var attrName = cols[j][0].innerHTML;
+			tableJSON[index][attrName] = values[j];
+		}
+	}
+	
+	/* Retorna o JSON com todas as informações */
+	return tableJSON;
+}
