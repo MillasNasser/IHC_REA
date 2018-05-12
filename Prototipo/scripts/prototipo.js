@@ -59,10 +59,9 @@ function Start() {
 	genAddressNum(endereços_iniciais);
 }
 
-/* Cria um numero hexadecimal e o formata para 4 digitos 
-   A contagem é feita de 4 em 4 */
+/* Cria um numero hexadecimal e o formata para 4 digitos */
 function int_to_endereço(i){
-	var hexNum = (i * 4).toString(16).toUpperCase();
+	var hexNum = (i).toString(16).toUpperCase();
 	return ("0000" + hexNum).slice(-4);
 }
 
@@ -94,7 +93,7 @@ function genAddressNum(qntLin) {
 		/* Primeira coluna, endereços gerados */
 		var div = document.createElement("div");
 		div.className = "MCol1 Dark-Base";
-		div.innerHTML = "0x" + int_to_endereço(i);
+		div.innerHTML = "0x" + int_to_endereço(i * 4);
 		/* Adiciona ao pai */
 		parent.appendChild(div);
 
