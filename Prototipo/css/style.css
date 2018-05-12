@@ -107,11 +107,14 @@
 
 /* Linhas ativas */
 	.Code pre.Ativo{
+		background: #cacaca;
+	}
+	.Code span.Executando{
 		background: coral;
 	}
 	.Numbers div.Ativo{
 		color: coral;
-		background-color: #333;
+		background-color: rgb(37, 37, 37);
 	}
 
 /* Tabela de Memória */

@@ -29,14 +29,41 @@ class Instrução{
 
 class Codigo{
 	constructor(nome){
+		this.reset(nome);
+	}
+	
+	reset(nome){
 		this.nome = nome;
 		this.instruções = [];
 	}
 }
 
+/*class Célula{
+	constructor(enredeço){
+		this.endereço = enredeço; //Talvez não seja necessário.
+		this.nome = "";
+		this.valor = "";
+		this.ponteiro = false;
+		this.desreferenciado = "";
+	}
+}*/
+
+/* Variáveis globais */
+var g_codigo = new Codigo();
+//var memórias = [[]];
+var linha_atual = 0;
+var instrução_atual = 0; //Pode ter mais de uma instrução por linha.
+
 function Start() {
 	genLinesNum(linhas_iniciais);
 	genAddressNum(endereços_iniciais);
+}
+
+/* Cria um numero hexadecimal e o formata para 4 digitos 
+   A contagem é feita de 4 em 4 */
+function int_to_endereço(i){
+	var hexNum = (i * 4).toString(16).toUpperCase();
+	return ("0000" + hexNum).slice(-4);
 }
 
 /* Função que gera as linhas laterais do código */
@@ -47,6 +74,7 @@ function genLinesNum(qnt) {
 		/* Para cada index é criado um div, seu valor é o index */
 		var linha = document.createElement("div");
 		linha.innerHTML = i;
+		linha.id = "numero_" + i;
 
 		/* Insere a nova div como filho do output */
 		document.getElementById("LineNumbers").appendChild(linha);
@@ -54,16 +82,11 @@ function genLinesNum(qnt) {
 }
 
 /* Função que gera a tabela de endereços */
-function genAddressNum(qnt) {
-	for (let i = 0; i < qnt; i++) {
-		/* Cria um numero hexadecimal e o formata para 4 digitos 
-		   A contagen é feita de 4 em 4*/
-		var hexNum = (i * 4).toString(16).toUpperCase();
-		var formatHex = ("0000" + hexNum).slice(-4);
-
-		/* Calcula qual é a quantidade de colunas na tabela */
-		var qntCol = document.getElementsByClassName("MemHeader")[0].children.length;
-
+function genAddressNum(qntLin) {
+	/* Calcula qual é a quantidade de colunas na tabela */
+	var qntCol = document.getElementsByClassName("MemHeader")[0].children.length;
+	
+	for (let i = 0; i < qntLin; i++) {
 		/* Cria uma div pai que receberá as colunas */
 		var parent = document.createElement("div");
 		parent.className = "MemBody";
@@ -71,12 +94,12 @@ function genAddressNum(qnt) {
 		/* Primeira coluna, endereços gerados */
 		var div = document.createElement("div");
 		div.className = "MCol1 Dark-Base";
-		div.innerHTML = "0x" + formatHex;
+		div.innerHTML = "0x" + int_to_endereço(i);
 		/* Adiciona ao pai */
 		parent.appendChild(div);
 
 		/* Cria a segunda coluna até a quantidade de colunas 
-		   Todas elas possui um filho input*/
+		   Todas elas possui um filho input */
 		for(let i = 2; i <= qntCol; i++){
 			/* Cria a coluna */
 			var div = document.createElement("div");
@@ -98,22 +121,25 @@ function genAddressNum(qnt) {
 	}
 }
 
-function set_codigo(codigo){
+function set_codigo(){
 	/* Cria a referência do output para o codigo lido */
 	var Code = document.getElementById("Code");
 	/* Reseta seu valor */
 	Code.innerHTML = "";
 
 	/* Para cada instrução */
-	codigo.instruções.forEach(instrução => {
+	var linha = 0;
+	g_codigo.instruções.forEach(instrução => {
 		/* Cria uma tag que exibe o texto como foi escrito 
 		   A tag é chamada de pre */
 		var pre = document.createElement("pre");
 		pre.className = "prettyprint prettyprinted";
+		pre.id = "linha_" + linha;
+		linha++;
 
 		/* Chama o formatador de código para a linha atual 
 		   A linguagem utilizada para formatar é C
-		   Para \n e <, são substituidos por símbolos mais convenientes*/
+		   '<' é substituido por "&lt" para ser exibido corretamente na página */
 		pre.innerHTML = PR.prettyPrintOne(instrução.texto.replace("<", "&lt;"), "C", true);
 
 		/* Adiciona a linha ao output */
@@ -121,7 +147,10 @@ function set_codigo(codigo){
 	});
 
 	/* Gera as linhas laterais de acordo o numero de linhas do arquivo */
-	genLinesNum(codigo.instruções.length);
+	genLinesNum(g_codigo.instruções.length);
+
+	/* Ativa a primeira instrução. */
+	ativar_instrução(linha_atual);
 }
 
 /* Função que carrega o código-fonte para o REA */
@@ -130,11 +159,11 @@ function openFile(event) {
 	var file = event.target.files[0];
 
 	/* Cria uma instancia de FileReader 
-	   Um objeto que é capaz de ler arquivos*/
+	   Um objeto que é capaz de ler arquivos */
 	var reader = new FileReader();
 
-	/* Cria um novo código */
-	var codigo = new Codigo(file.name);
+	/* Reseta o código */
+	g_codigo.reset(file.name);
 
 	/* Função que faz a leitura do arquivo.
 	   Ela inicia quando o elemento lido foi carregado completamente */
@@ -144,14 +173,21 @@ function openFile(event) {
 
 		/*Para cada uma das linhas */
 		linhas.forEach(linha => {
-			codigo.instruções.push(new Instrução(linha));
+			g_codigo.instruções.push(new Instrução(linha));
+
+			//Achando a função main
+			if(linha.search(/int\s+main\s*\(.*\)\s*{?/) != -1){
+				linha_atual = g_codigo.instruções.length - 1;
+			}
 		});
 
-		set_codigo(codigo);
+		set_codigo();
+
+		console.log("instrução main: " + g_codigo.instruções[linha_atual].texto);
 	};
 
 	/* Chama a função que lê o arquivo 
-	   Ela está sendo chamada para ler Texto*/
+	   Ela está sendo chamada para ler Texto */
 	reader.readAsText(file);
 };
 
@@ -209,4 +245,36 @@ function loadTableData() {
 	
 	/* Retorna o JSON com todas as informações */
 	return tableJSON;
+}
+
+function avançar(){
+	desativar_instrução(linha_atual);
+	linha_atual++;
+	//instrução_atual++;
+	ativar_instrução(linha_atual);
+}
+
+function voltar(){
+	desativar_instrução(linha_atual);
+	linha_atual--;
+	//instrução_atual--;
+	ativar_instrução(linha_atual);
+}
+
+function ativar_instrução(linha){
+	console.log("Ativando a linha " + linha);
+	var instrução = document.getElementById("linha_" + linha);
+	instrução.className += " Ativo";
+
+	var número = document.getElementById("numero_" + linha);
+	número.className += " Ativo";
+}
+
+function desativar_instrução(linha){
+	console.log("Desativando a linha " + linha);
+	var instrução = document.getElementById("linha_" + linha);
+	instrução.className = instrução.className.replace(/\s?Ativo\s?/, "");
+
+	var número = document.getElementById("numero_" + linha);
+	número.className = número.className.replace(/\s?Ativo\s?/, "");
 }
