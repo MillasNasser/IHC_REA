@@ -114,7 +114,7 @@ function set_codigo(codigo){
 		/* Chama o formatador de código para a linha atual 
 		   A linguagem utilizada para formatar é C
 		   Para \n e <, são substituidos por símbolos mais convenientes*/
-		pre.innerHTML = PR.prettyPrintOne(" " + instrução.texto.replace("<", "&lt;"), "C", true);
+		pre.innerHTML = PR.prettyPrintOne(instrução.texto.replace("<", "&lt;"), "C", true);
 
 		/* Adiciona a linha ao output */
 		Code.appendChild(pre);
