@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF8">
-        <title>Visualizador de Ponteiros</title>
-        <!-- Pretty Print -->
-        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    </head>
-    <body>
-        <input type="file" id="ctrl" webkitdirectory directory multiple/>
-        <table>
-            <tbody>
+<head>
+    <meta charset="UTF8">
+    <title>Visualizador de Ponteiros</title>
+    <!-- Pretty Print -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="scripts/prototipo.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixex-top">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="">Carregar exercício</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="NovoExercicio.html">Registrar exercício</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <input type="file" id="CarregarArquivos" webkitdirectory directory multiple onchange="listarArquivos(event)" />
+    </div>
+    <div class="container">
+        <table class="table table-striped table-hover">
+            <thead>
                 <tr>
-                    <td></td>
-                    <td>Exemplo.c</td>
-                    <td><span class="glyphicon glyphicon-star"></td>
+                    <th>Nome</th>
+                    <th>Dificuldade</th>
                 </tr>
-                <tr>
-                        <td></td>
-                    <td>AEDS3.c</td>
-                    <td><span class="glyphicon glyphicon-star">
-                        <span class="glyphicon glyphicon-star">
-                        <span class="glyphicon glyphicon-star">
-                        <span class="glyphicon glyphicon-star">
-                        <span class="glyphicon glyphicon-star">
-                    </td>
-                </tr>
-            </tbody>
+            </thead>
+            <tbody id="ListaDeExercicios"></tbody>
         </table>
-    </body>
+    </div>
+</body>
+
 </html>

@@ -13,10 +13,10 @@
 </head>
 <body onload="Start()">
 	<header class="Button-Group">
-			<a href="#" class="Load">Carregar exercicio<input type="file" onchange="openFile(event)"></a>
-			<a href="#" onclick="saveTable()">Registrar exercicio</a>
+			<a href="carregar.html" class="Load">Carregar exercicio<input type="file" onchange="openFile(event)"></a>
+			<a href="NovoExercicio.html">Registrar exercicio</a>
 			<a href="#" onclick="voltar()" class="glyphicon glyphicon-chevron-left">Voltar</a>
-			<a href="#" onclick="avançar()">Avançar <span class="glyphicon glyphicon-chevron-right"></span></a>
+			<a href="#" onclick="avançar();saveTable()">Avançar <span class="glyphicon glyphicon-chevron-right"></span></a>
 			<a href="#" class="float-R glyphicon glyphicon-repeat" ></span></a>
 	</header>
 	<div class="Content">

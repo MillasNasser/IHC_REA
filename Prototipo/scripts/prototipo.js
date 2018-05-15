@@ -277,3 +277,23 @@ function desativar_instrução(linha){
 	var número = document.getElementById("numero_" + linha);
 	número.className = número.className.replace(/\s?Ativo\s?/, "");
 }
+
+function listarArquivos(event) {
+	document.getElementById("ListaDeExercicios").innerHTML = "";
+	var arquivos = document.getElementById("CarregarArquivos").files;
+	for(var i = 0; i < arquivos.length; i++){
+		if(arquivos[i].name.endsWith(".c")){
+			var novaLinha = document.createElement("tr");
+			var nome = document.createElement("td");
+			nome.innerHTML = arquivos[i].name;
+			var dificuldade = document.createElement("td");
+			dificuldade.innerHTML ="<span class='glyphicon glyphicon-star'></span>";
+			for(var k = 0, j = Math.random()*10 % 4; k < j; k++){
+				dificuldade.innerHTML += "<span class='glyphicon glyphicon-star'></span>";
+			}
+			novaLinha.appendChild(nome);
+			novaLinha.appendChild(dificuldade);
+			document.getElementById("ListaDeExercicios").appendChild(novaLinha);
+		}
+	}
+}
