@@ -1,36 +1,80 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF8">
 	<title>Visualizador de Ponteiros</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Pretty Print -->
 	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-	
+
 	<script src="scripts/prototipo.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<body onload="Start()">
-	<header class="Button-Group">
-			<a href="carregar.html" class="Load">Carregar exercicio<input type="file" onchange="openFile(event)"></a>
-			<a href="NovoExercicio.html">Registrar exercicio</a>
-			<a href="#" onclick="voltar()" class="glyphicon glyphicon-chevron-left">Voltar</a>
-			<a href="#" onclick="avançar();saveTable()">Avançar <span class="glyphicon glyphicon-chevron-right"></span></a>
-			<a href="#" class="float-R glyphicon glyphicon-repeat" ></span></a>
-	</header>
-	<div class="Content">
-		<div id="LineNumbers" class="Numbers Dark-Base"></div>
-		<div id="Code" class="Code"></div>
-	</td>	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"	crossorigin="anonymous">
+	 
 
-	<div id="MemTabl" class="Memory Light-Base">
-		<div class="MemHeader Dark-Base">
-			<div class="MCol1">Endereço</div>
-			<div class="MCol2">Nome do Endereço</div>
-			<div class="MCol3">Valor</div>
-			<div class="MCol4">Valor Desreferenciado</div>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body onload="Start()">
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+		<ul class="navbar-nav">
+			<li class="nav-item  active">
+				<a class="nav-link" href="index.html">
+					<span class="glyphicon glyphicon-home"></span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link Load" href="">Carregar exercício
+					<input type="file" onchange="openFile(event)">
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="NovoExercicio.html">Registrar exercício</a>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="container-fluid fixed-bottom">
+		<div class="btn-group">
+			<button class="btn btn-info btn-sm" onclick="voltar()">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</button>
+			<button class="btn btn-info btn-sm" onclick="avançar();saveTable()">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</button>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-danger btn-sm">
+				<span class="glyphicon glyphicon-repeat"></span>
+			</button>
 		</div>
 	</div>
+
+	<div class="container-fluid row">
+
+		<div class="col-md-6 d-inline-flex">
+			<div id="LineNumbers" class="Numbers Dark-Base"></div>
+			<div id="Code" class="Code"></div>
+		</div>
+
+		<table class="table table-striped col-md-5">
+			<thead>
+				<tr class="MemHeader">
+					<th class="table-dark MCol1">Endereço</th>
+					<th class="MCol2">Nome do Endereço</th>
+					<th class="MCol3">Valor</th>
+					<th class="MCol4">Valor Desreferênciado</th>
+				</tr>
+			</thead>
+			<tbody id="MemTabl">
+			</tbody>
+		</table>
+	</div>
+	<br/>
+	<br/>
 </body>
+
 </html>

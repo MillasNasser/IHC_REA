@@ -1,27 +1,23 @@
 /* Compartilhados */
-	pre.prettyprint, .Numbers, .Code, .Button-Group, body{
+	pre.prettyprint, .Numbers, .Code, body{
 		padding: 0;
 		margin: 0;
 		border: none;
 	}
 
 	.Code, .Memory{
-		width: 45vw;
+		width: 100%;
 		overflow: auto;
 	}
 
 /* Classes Base*/
-	.Content{
-		display: flex;
-		margin-top: 4em;
-		margin-left: 1em;
+	body{
+		padding-top: 4em;
 	}
 
-	.Memory{
-		overflow: auto;
-		width: 45vw;
-		border-top-right-radius: 0.3cm;
-		border-bottom-right-radius: 0.3cm;
+	.table td{
+		padding-top: 0;
+		padding-bottom: 0.2em;
 	}
 
 	.Numbers{
@@ -31,16 +27,9 @@
 	}
 
 	.Code{
+		overflow-x: auto;
 		background-color: #DDD;
 		margin-right: 0.5em;
-		padding-left: 1vw;
-	}
-
-	.Button-Group{
-		background-color: #333;
-		top: 0;
-		position: fixed;
-		width: 100%;
 	}
 
 	.Load{
@@ -51,28 +40,18 @@
 	.Numbers div{
 		font-family: monospace;
 		text-align: right;
-		
 		padding: 0 0.2em 0 0.5em;
+	}
+
+	pre{
+		overflow: visible;
+		font-family: monospace;
+		font-size: 1em;
+		tab-size: 3em;
 	}
 
 	.linenums{
 		padding: 0%;
-	}
-
-	.Button-Group a{
-		float: left;
-		display: block;
-		color: #f2f2f2;
-		text-align: center;
-		padding: 14px 16px;
-		text-decoration: none;
-		font-size: 17px;
-		height: 1em;
-	}
-
-	.Button-Group a:hover{
-		background-color: #DDD;
-		color: #333;	
 	}
 
 	.Load input{
@@ -88,6 +67,10 @@
 	}
 
 /* Uteis */
+	.flex{
+		display: flex;
+	}
+
 	.float-L{
 		float: left !important;
 	}
@@ -97,7 +80,7 @@
 	}
 
 	.Dark-Base{
-		background-color: #333;
+		background-color: #212529;
 		color: beige;
 	}
 
@@ -118,39 +101,24 @@
 	}
 
 /* Tabela de Memória */
-	.MemHeader{
-		font-weight: bold;
-	}
 
-	.MemBody, .MemHeader{
-		display: flex;
-	}
+	.MCol2 input{ 
+		min-width: 9em; 
+		max-width: 9em; 
+	} 
 
-	.MCol1{
-		min-width: 5em;
-		max-width: 5em;
-		padding-left: 0.5em;
-	}
+	.MCol3 input{ 
+		min-width: 5em; 
+		max-width: 5em; 
+	} 
 
-	.MCol2, .MCol2 input{
-		min-width: 9em;
-		max-width: 9em;
-	}
-
-	.MCol3, .MCol3 input{
-		min-width: 5em;
-		max-width: 5em;
-	}
-
-	.MCol4, .MCol4 input{
-		min-width: 10em;
-		max-width: 10em;
-		display: inline-block;
-	}
+	.MCol4 input{ 
+		min-width: auto; 
+		max-width: auto; 
+		display: inline-block; 
+	} 
 
 	.MCol2 input, .MCol3 input, .MCol4 input{
-		display: block;
-		margin: 0 auto;
 		border-width: 0 0 0.1em 0;
 		border-style: solid;
 		background-color: inherit;

@@ -5,7 +5,7 @@ String.prototype.replaceAll = function(str1, str2, ignore){
 
 /* Variáveis globais */
 var linhas_iniciais = 1;
-var endereços_iniciais = 16;
+var endereços_iniciais = 14;
 var indentação_padrão = 4;
 
 class Instrução{
@@ -87,11 +87,10 @@ function genAddressNum(qntLin) {
 	
 	for (let i = 0; i < qntLin; i++) {
 		/* Cria uma div pai que receberá as colunas */
-		var parent = document.createElement("div");
-		parent.className = "MemBody";
+		var parent = document.createElement("tr");
 
 		/* Primeira coluna, endereços gerados */
-		var div = document.createElement("div");
+		var div = document.createElement("td");
 		div.className = "MCol1 Dark-Base";
 		div.innerHTML = "0x" + int_to_endereço(i * 4);
 		/* Adiciona ao pai */
@@ -101,7 +100,7 @@ function genAddressNum(qntLin) {
 		   Todas elas possui um filho input */
 		for(let i = 2; i <= qntCol; i++){
 			/* Cria a coluna */
-			var div = document.createElement("div");
+			var div = document.createElement("td");
 			div.className = "MCol"+(i);
 
 			/* Cria o filho input */
@@ -139,7 +138,7 @@ function set_codigo(){
 		/* Chama o formatador de código para a linha atual 
 		   A linguagem utilizada para formatar é C
 		   '<' é substituido por "&lt" para ser exibido corretamente na página */
-		pre.innerHTML = PR.prettyPrintOne(instrução.texto.replace("<", "&lt;"), "C", true);
+		pre.innerHTML = PR.prettyPrintOne(" "+instrução.texto.replace("<", "&lt;"), "C", true);
 
 		/* Adiciona a linha ao output */
 		Code.appendChild(pre);
@@ -196,6 +195,8 @@ function saveTable(){
 	console.log(table);
 }
 
+/* Arrumar a treta */
+
 /* TODO: Otimizar a função deixando-a genérica e legivel*/
 /* Função que transforma os dados da tabela em JSON */
 function loadTableData() {
@@ -226,6 +227,7 @@ function loadTableData() {
 				empty += values[j] == 0 ? 1: 0; 
 			}
 		}
+
 		/* Guarda o index de referencia do atributo JSON */
 		var index = values[0]; //Endereço
 		
