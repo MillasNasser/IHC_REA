@@ -40,12 +40,12 @@
 			<button class="btn btn-info btn-sm" onclick="voltar()">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 			</button>
-			<button class="btn btn-info btn-sm" onclick="avançar();saveTable()">
+			<button class="btn btn-info btn-sm" onclick="avançar();">
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</button>
 		</div>
 		<div class="btn-group">
-			<button class="btn btn-danger btn-sm">
+			<button class="btn btn-danger btn-sm" onclick="restartTable();">
 				<span class="glyphicon glyphicon-repeat"></span>
 			</button>
 		</div>
@@ -62,7 +62,7 @@
 			
 			echo
 			"<script>
-				entradaRequisitos = '".str_replace("'","\'",$JSON)."';
+				entradaRequisitos = JSON.parse('".str_replace("'","\'",$JSON)."');
 			</script>";
 		}else{
 			echo "Não carregou o post";
@@ -80,7 +80,7 @@
 							document.getElementById("Code").innerHTML = "";
 						</script>';*/
 						$i = 0;
-						for($i = 0; !feof($exercicio); $i++){
+						for($i = 1; !feof($exercicio); $i++){
 							
 							if(fscanf($exercicio,"%[^\n]\n",$leitura)==0){
 								$leitura = '';
@@ -101,6 +101,7 @@
 								
 							</script>';
 						}
+						$i--;
 						echo 
 						'<script>
 							genLinesNum('.$i.');

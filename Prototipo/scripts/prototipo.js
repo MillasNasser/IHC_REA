@@ -7,53 +7,10 @@ String.prototype.replaceAll = function(str1, str2, ignore){
 var linhas_iniciais = 1;
 var endereços_iniciais = 14;
 var indentação_padrão = 4;
+var memórias = [];
+var linha_atual = 1;
 var entradaRequisitos = "";
-
-class Instrução{
-	constructor(texto){
-		this.set_texto(texto);
-		this.parse_requisitos();
-	}
-
-	set_texto(texto){
-		//Removendo um possível '\n' ao final da linha.
-		this.texto = texto.replace("\n", "");
-	}
-
-	parse_requisitos(){
-		//Zerando o número de requisitos.
-		this.requisitos = [];
-
-		var texto = this.texto;
-	}
-}
-
-class Codigo{
-	constructor(nome){
-		this.reset(nome);
-	}
-	
-	reset(nome){
-		this.nome = nome;
-		this.instruções = [];
-	}
-}
-
-/*class Célula{
-	constructor(enredeço){
-		this.endereço = enredeço; //Talvez não seja necessário.
-		this.nome = "";
-		this.valor = "";
-		this.ponteiro = false;
-		this.desreferenciado = "";
-	}
-}*/
-
-/* Variáveis globais */
-var g_codigo = new Codigo();
-//var memórias = [[]];
-var linha_atual = 0;
-var instrução_atual = 0; //Pode ter mais de uma instrução por linha.
+var instrução_atual = 0;
 
 function Start() {
 	//genLinesNum(linhas_iniciais);
@@ -62,7 +19,7 @@ function Start() {
 
 /* Cria um numero hexadecimal e o formata para 4 digitos */
 function int_to_endereço(i){
-	var hexNum = (i).toString(16).toUpperCase();
+	var hexNum = (i).toString(10).toUpperCase();
 	return ("0000" + hexNum).slice(-4);
 }
 
@@ -71,7 +28,7 @@ function genLinesNum(qnt) {
 	/* Pega a referência do output e reseta seu valor */
 	console.log(qnt);
 	document.getElementById("LineNumbers").innerHTML = "";
-	for (let i = 0; i < qnt; i++) {
+	for (let i = 1; i <= qnt; i++) {
 		/* Para cada index é criado um div, seu valor é o index */
 		var linha = document.createElement("div");
 		linha.innerHTML = i;
@@ -80,6 +37,10 @@ function genLinesNum(qnt) {
 		/* Insere a nova div como filho do output */
 		document.getElementById("LineNumbers").appendChild(linha);
 	}
+
+	//Identificando a primeira linha.
+	linha_atual = entradaRequisitos[instrução_atual]["linha"];
+	ativar_instrução(linha_atual);
 }
 
 /* Função que gera a tabela de endereços */
@@ -94,7 +55,7 @@ function genAddressNum(qntLin) {
 		/* Primeira coluna, endereços gerados */
 		var div = document.createElement("td");
 		div.className = "MCol1 Dark-Base";
-		div.innerHTML = "0x" + int_to_endereço(i * 4);
+		div.innerHTML = ""+ int_to_endereço(i);
 		/* Adiciona ao pai */
 		parent.appendChild(div);
 
@@ -119,91 +80,41 @@ function genAddressNum(qntLin) {
 		/* Adiciona o pai à tabela de memória */
 		document.getElementById("MemTabl").appendChild(parent);
 	}
+	memórias = [loadTableData()];
 }
 
-function set_codigo(){
-	/* Cria a referência do output para o codigo lido */
-	var Code = document.getElementById("Code");
-	/* Reseta seu valor */
-	Code.innerHTML = "";
+function loadLastTable(){
+	var lastTable = memórias.pop();
+	
+}
 
-	/* Para cada instrução */
-	var linha = 0;
-	g_codigo.instruções.forEach(instrução => {
-		/* Cria uma tag que exibe o texto como foi escrito 
-		   A tag é chamada de pre */
-		var pre = document.createElement("pre");
-		pre.className = "prettyprint prettyprinted";
-		pre.id = "linha_" + linha;
-		linha++;
-
-		/* Chama o formatador de código para a linha atual 
-		   A linguagem utilizada para formatar é C
-		   '<' é substituido por "&lt" para ser exibido corretamente na página */
-		pre.innerHTML = PR.prettyPrintOne(" "+instrução.texto.replace("<", "&lt;"), "C", true);
-
-		/* Adiciona a linha ao output */
-		Code.appendChild(pre);
-	});
-
-	/* Gera as linhas laterais de acordo o numero de linhas do arquivo */
-	genLinesNum(g_codigo.instruções.length);
-
-	/* Ativa a primeira instrução. */
+function restartTable(){
+	console.log("RESETOU D+++");
+	desativar_instrução(linha_atual);
+	console.log(entradaRequisitos);
+	linha_atual = entradaRequisitos[0]["linha"];
+	console.log(linha_atual);
 	ativar_instrução(linha_atual);
+	instrução_atual = 0;
+
+	var cols = [];
+	for(let i = 0; i < document.getElementsByClassName("MemHeader")[0].children.length; i++){
+		cols[i] = document.getElementsByClassName("MCol"+(i+1));
+	}
+	
+	for(let i = 1; i < cols[0].length; i++){
+		for(let j = 1; j < cols.length; j++){
+			cols[j][i].children[0].value = "";		
+		}
+	}
+	memórias = [loadTableData()];
 }
-
-/* Função que carrega o código-fonte para o REA */
-function openFile(event) {
-	/* Captura o arquivo lido pelo evento */
-	var file = event.target.files[0];
-
-	/* Cria uma instancia de FileReader 
-	   Um objeto que é capaz de ler arquivos */
-	var reader = new FileReader();
-
-	/* Reseta o código */
-	g_codigo.reset(file.name);
-
-	/* Função que faz a leitura do arquivo.
-	   Ela inicia quando o elemento lido foi carregado completamente */
-	reader.onload = function () {
-		/* Pega o output da leitura e divide em uma lista com as linhas */
-		var linhas = (reader.result).split('\n');
-
-		/*Para cada uma das linhas */
-		linhas.forEach(linha => {
-			g_codigo.instruções.push(new Instrução(linha));
-
-			//Achando a função main
-			if(linha.search(/int\s+main\s*\(.*\)\s*{?/) != -1){
-				linha_atual = g_codigo.instruções.length - 1;
-			}
-		});
-
-		set_codigo();
-
-		console.log("instrução main: " + g_codigo.instruções[linha_atual].texto);
-	};
-
-	/* Chama a função que lê o arquivo 
-	   Ela está sendo chamada para ler Texto */
-	reader.readAsText(file);
-};
-
-/* TODO: Criar a função que salva os valores recebidos*/
-function saveTable(){
-	var table = loadTableData();
-	console.log(table);
-}
-
-/* Arrumar a treta */
 
 /* TODO: Otimizar a função deixando-a genérica e legivel*/
 /* Função que transforma os dados da tabela em JSON */
 function loadTableData() {
 	/* JSON da tabela */
-	var tableJSON = [[]];
+	var tableJSON = [];
 
 	/* Lista das possiveis colunas da tabela*/
 	var cols = [];
@@ -235,7 +146,7 @@ function loadTableData() {
 		
 		/* Se houver determinada quantidade de colunas vazias, não insere no JSON 
 			É cols.length-1, pois Endereço nunca é vazio*/
-		if(empty >= (cols.length-1))continue;
+		//if(empty >= (cols.length-1))continue;
 
 		/* Cria a linha do JSON com o nome da variável */
 		tableJSON[index] = {};
@@ -250,17 +161,64 @@ function loadTableData() {
 	return tableJSON;
 }
 
+function comparar_instrução(requisitos, entrada){
+	var campos = ["Nome da Variavel", "Valor", "Valor Desreferenciado"];
+
+	for(let i = 0; i < campos.length; i++){
+		if(requisitos[campos[i]] != entrada[campos[i]]){
+			return false;
+		}
+	}
+	return true;
+}
+
 function avançar(){
+	console.log("========================AVANÇAR=================");
+	var table = loadTableData();
+	console.log("TABELA ANTIGA:");
+	console.log(memórias[memórias.length - 1]);
+	console.log("\nTABELA NOVA:");
+	console.log(table)
+	
+	//Comparando com a tabela anterior.
+	var ultima_tabela = memórias[memórias.length - 1];
+	var mudanças = []
+	for(let i = 0; i < endereços_iniciais; i++){
+		var endereço = "" + int_to_endereço(i);
+		var colunas = ["Nome da Variavel", "Valor", "Valor Desreferenciado"];
+		
+		for(let j = 0; j < colunas.length; j++){
+			if(table[endereço][colunas[j]] != ultima_tabela[endereço][colunas[j]]){
+				console.log("Mudou " + colunas[j] + " no endereço " + endereço);
+				console.log("mudou de " + ultima_tabela[endereço][colunas[j]] + " para " + table[endereço][colunas[j]]);
+				mudanças.push({"Nome da Variavel": table[endereço]["Nome da Variavel"], "Valor": table[endereço]["Valor"], "linha": linha_atual});
+				break;
+			}
+		}
+	}
+
+	if(mudanças.length != 1 || !comparar_instrução(entradaRequisitos[instrução_atual], mudanças[0])){
+		alert("Mudanças realizadas (ou não) são inválidas\nDica: caracteres são reprsentados entre aspas simples.");
+		return;
+	}
+
+	alert("Muito bem! Para a próxima instrução.");
 	desativar_instrução(linha_atual);
-	linha_atual++;
-	//instrução_atual++;
+	instrução_atual++;
+	if(instrução_atual >= entradaRequisitos.length){
+		alert("ACABOU!!!!!");
+		return;
+	}
+	linha_atual = entradaRequisitos[instrução_atual]["linha"];
 	ativar_instrução(linha_atual);
+	
+	memórias.push(table);
 }
 
 function voltar(){
 	desativar_instrução(linha_atual);
-	linha_atual--;
-	//instrução_atual--;
+	instrução_atual--;
+	linha_atual = entradaRequisitos[instrução_atual]["linha"];
 	ativar_instrução(linha_atual);
 }
 

@@ -33,7 +33,7 @@ def main():
 				var, valor = frames[i][j].split(' = ')
 				if 'char' in instrucoes[i]:
 					valor = valor.split(' ')[1]
-				requisitos.append({"nome": var, "valor": valor, "linha": instrucoes[i].split('\t')[0]})
+				requisitos.append({"Nome da Variavel": var, "Valor": valor, "linha": instrucoes[i].split('\t')[0]})
 	
 	sys.stdout.write(json.dumps(requisitos))
 	sys.stdout.flush()
