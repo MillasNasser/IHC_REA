@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <!-- Header da página -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -34,22 +35,28 @@
     </nav>
 
 
+    <!-- Botão que carrega arquivos -->
     <div class="container">
         <button class="btn btn-success Load">Load Files
             <input type="file" id="CarregarArquivos" webkitdirectory directory multiple onchange="listarArquivos(event)" />
         </button>
     </div>
-    <div class="container">
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Dificuldade</th>
-                </tr>
-            </thead>
-            <tbody id="ListaDeExercicios"></tbody>
-        </table>
-    </div>
+
+    <!-- Tabela dos links -->
+    <form action="index.php" method="post" id="loadExercicios">
+        <div class="container">
+            <table class="table table-striped table-hover row-clickable">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Dificuldade</th>
+                    </tr>
+                </thead>
+                <tbody id="ListaDeExercicios"></tbody>
+            </table>
+        </div>
+        <input type="hidden" name="arquivo" value="" id="NomeArquivo"/>
+    </form>
 </body>
 
 </html>

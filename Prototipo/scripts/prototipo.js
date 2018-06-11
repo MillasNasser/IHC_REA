@@ -7,6 +7,7 @@ String.prototype.replaceAll = function(str1, str2, ignore){
 var linhas_iniciais = 1;
 var endereços_iniciais = 14;
 var indentação_padrão = 4;
+var entradaRequisitos = "";
 
 class Instrução{
 	constructor(texto){
@@ -55,7 +56,7 @@ var linha_atual = 0;
 var instrução_atual = 0; //Pode ter mais de uma instrução por linha.
 
 function Start() {
-	genLinesNum(linhas_iniciais);
+	//genLinesNum(linhas_iniciais);
 	genAddressNum(endereços_iniciais);
 }
 
@@ -68,6 +69,7 @@ function int_to_endereço(i){
 /* Função que gera as linhas laterais do código */
 function genLinesNum(qnt) {
 	/* Pega a referência do output e reseta seu valor */
+	console.log(qnt);
 	document.getElementById("LineNumbers").innerHTML = "";
 	for (let i = 0; i < qnt; i++) {
 		/* Para cada index é criado um div, seu valor é o index */
@@ -283,19 +285,48 @@ function desativar_instrução(linha){
 function listarArquivos(event) {
 	document.getElementById("ListaDeExercicios").innerHTML = "";
 	var arquivos = document.getElementById("CarregarArquivos").files;
+	var nomes = [];
 	for(var i = 0; i < arquivos.length; i++){
 		if(arquivos[i].name.endsWith(".c")){
+			nomes.push(arquivos[i].name);
 			var novaLinha = document.createElement("tr");
 			var nome = document.createElement("td");
-			nome.innerHTML = arquivos[i].name;
 			var dificuldade = document.createElement("td");
-			dificuldade.innerHTML ="<span class='glyphicon glyphicon-star'></span>";
+			
+			/* Cria um link para o nome */
+			var nameLink = document.createElement("a");
+			nameLink.innerHTML = arquivos[i].name;
+			nameLink.onclick = retornoClick(arquivos[i].name);
+			nameLink.href = "#";
+			
+			/* Cria um link para a dificuldade */
+			var dificultLink = document.createElement("a");
+			var stars = "<span class='glyphicon glyphicon-star'></span>";
 			for(var k = 0, j = Math.random()*10 % 4; k < j; k++){
-				dificuldade.innerHTML += "<span class='glyphicon glyphicon-star'></span>";
+				stars += "<span class='glyphicon glyphicon-star'></span>";
 			}
+			dificultLink.innerHTML = stars;
+			dificultLink.onclick = retornoClick(arquivos[i].name);
+			dificultLink.href = "#";
+			
+			/* Adiciona todos os filhos */
+			nome.appendChild(nameLink);
+			dificuldade.appendChild(dificultLink);
 			novaLinha.appendChild(nome);
 			novaLinha.appendChild(dificuldade);
 			document.getElementById("ListaDeExercicios").appendChild(novaLinha);
 		}
 	}
+}
+
+function retornoClick(indice) {
+	var i = JSON.parse(JSON.stringify(indice));
+	return function () {
+		document.getElementById("NomeArquivo").value = i;
+		document.getElementById("loadExercicios").submit();
+	};
+}
+
+function geraRequisitos(){
+	console.log(saida_gdb.length);
 }

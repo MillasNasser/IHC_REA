@@ -1,0 +1,1 @@
+325	../csu/libc-start.c: Arquivo ou diretório não encontrado.

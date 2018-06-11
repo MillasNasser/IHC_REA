@@ -10,6 +10,17 @@
 		overflow: auto;
 	}
 
+	table.row-clickable tbody tr td {
+		padding: 0;
+	}
+	
+	table.row-clickable tbody tr td a {
+		text-decoration: none;
+		color: #212529;
+		display: block;
+		padding: 8px;
+	}
+
 /* Classes Base*/
 	body{
 		padding-top: 4em;
