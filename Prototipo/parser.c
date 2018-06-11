@@ -97,7 +97,7 @@ int main(int argc, char *argv[]){
 		close(pipe_pai[0]);
 		dup2(pipe_pai[1], 1);
 
-		FILE *err = fopen("erro.txt", "w");
+		FILE *err = fopen("/dev/null", "w");
 		dup2(fileno(err), 2);
 
 		if(execl("/usr/bin/gdb", "/usr/bin/gdb", "-silent", executavel, (char*) NULL) == -1){

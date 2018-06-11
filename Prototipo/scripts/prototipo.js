@@ -5,7 +5,7 @@ String.prototype.replaceAll = function(str1, str2, ignore){
 
 /* Variáveis globais */
 var linhas_iniciais = 1;
-var endereços_iniciais = 14;
+var endereços_iniciais = 8;
 var indentação_padrão = 4;
 var memórias = [];
 var linha_atual = 1;
@@ -206,7 +206,8 @@ function avançar(){
 	desativar_instrução(linha_atual);
 	instrução_atual++;
 	if(instrução_atual >= entradaRequisitos.length){
-		alert("ACABOU!!!!!");
+		alert("Parabéns exercício finalizado com sucesso!!\nVocê será redirecionado para a tela de exercícios");
+		window.location.replace("./index.php")
 		return;
 	}
 	linha_atual = entradaRequisitos[instrução_atual]["linha"];
@@ -240,7 +241,7 @@ function desativar_instrução(linha){
 	número.className = número.className.replace(/\s?Ativo\s?/, "");
 }
 
-function listarArquivos(event) {
+function listarArquivos() {
 	document.getElementById("ListaDeExercicios").innerHTML = "";
 	var arquivos = document.getElementById("CarregarArquivos").files;
 	var nomes = [];
@@ -277,14 +278,7 @@ function listarArquivos(event) {
 	}
 }
 
-function retornoClick(indice) {
-	var i = JSON.parse(JSON.stringify(indice));
-	return function () {
-		document.getElementById("NomeArquivo").value = i;
-		document.getElementById("loadExercicios").submit();
-	};
-}
-
-function geraRequisitos(){
-	console.log(saida_gdb.length);
+function retornoClick(nome) {
+	document.getElementById("NomeArquivo").value = nome;
+	document.getElementById("loadExercicios").submit();
 }
