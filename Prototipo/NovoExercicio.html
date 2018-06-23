@@ -24,33 +24,52 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.php">
-                    <span class="glyphicon glyphicon-home"></span>
-                </a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Registrar exercício</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="container-fluid">
+        <div class="row h-100">
+            <aside class="col-12 col-md-2 p-0 bg-dark">
+                <nav class="navbar navbar-expand navbar-dark bg-dark flex-row">
+                    <div class="collapse navbar-collapse">
+                        <div class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                            <ul class="list-unstyled components w-100">
+                                <li class="nav-item">
+                                    <a class="nav-link text-center" href="index.php">
+                                        <span class="glyphicon glyphicon-home"></span> Home
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center" href="NovoExercicio.html">
+                                        <span class="glyphicon glyphicon-floppy-save"></span>Criar exercício
+                                    </a>
+                                </li>
 
-    <div class="container">
-        <textarea placeholder="Codigo" id="CodigoEscrever" onchange="set_cores()"></textarea>
-        <form class="form-inline justify-content-center">
-            <input type="text" class="form-control" placeholder="Caminho do arquivo">
+                                <li><hr/></li>
 
-            <select class="form-control" id="sel1">
-                <option selected disabled hidden>Tamanho da tabela</option>
-                <option>8</option>
-                <option>16</option>
-                <option>32</option>
-                <option>64</option>
-            </select>
-            <button class="btn btn-success" disabled>Salvar</button>
-        </form>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </aside>
+            <main>
+                <div class="container-fluid col-10">
+                    <textarea placeholder="Codigo" id="CodigoEscrever" onchange="set_cores()" class="w-100"></textarea>
+                    <form class="form-inline justify-content-center">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Caminho do arquivo" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                        </div>
+
+                        <select class="form-control" id="sel1">
+                            <option selected disabled hidden>Tamanho da tabela</option>
+                            <option>8</option>
+                            <option>16</option>
+                            <option>32</option>
+                            <option>64</option>
+                        </select>
+                        <button class="btn btn-success" disabled>Salvar</button>
+                    </form>
+                </div>  
+            </main>
+        </div>
     </div>
 </body>
 
