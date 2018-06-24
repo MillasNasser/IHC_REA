@@ -1,85 +1,82 @@
 <html>
 
 <head>
-    <title>Visualizador de Ponteiros</title>
+	<title>Visualizador de Ponteiros</title>
 
-    <meta charset="UTF8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="UTF8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<script src="frameworks/jquery/jquery-3.3.1.min.js"></script>
 	<script src="frameworks/bootstrap-4.0.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="frameworks/bootstrap-4.0.0/css/bootstrap.min.css">
 
-    <script src="frameworks/codemirror/lib/codemirror.js"></script>
-    <script src="frameworks/codemirror/mode/clike/clike.js"></script>
+	<script src="frameworks/codemirror/lib/codemirror.js"></script>
+	<script src="frameworks/codemirror/mode/clike/clike.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="frameworks/gliphycons/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="frameworks/codemirror/lib/codemirror.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <style>
-        .CodeMirror {
-            border: 1px solid #eee;
-            height: 80vh;
-        }
-    </style>
+	<link rel="stylesheet" type="text/css" href="frameworks/gliphycons/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="frameworks/codemirror/lib/codemirror.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style>
+		.CodeMirror {
+			border: 1px solid #eee;
+			height: 80vh;
+		}
+	</style>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row h-100">
-            <aside class="col-12 col-md-2 p-0 bg-dark">
-                <nav class="navbar navbar-expand navbar-dark bg-dark flex-row">
-                    <div class="collapse navbar-collapse">
-                        <div class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-                            <ul class="list-unstyled components w-100">
-                                <li class="nav-item">
-                                    <a class="nav-link text-center" href="index.php">
-                                        <span class="glyphicon glyphicon-home"></span> Home
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-center" href="NovoExercicio.html">
-                                        <span class="glyphicon glyphicon-floppy-save"></span>Criar exercício
-                                    </a>
-                                </li>
+	<div class="container-fluid">
+		<div class="row h-100">
+			<aside class="col-12 col-md-2 p-0 bg-dark">
+				<nav class="navbar navbar-expand navbar-dark bg-dark flex-row">
+					<div class="collapse navbar-collapse">
+						<div class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+							<ul class="list-unstyled components w-100">
+								<li class="nav-item">
+									<a class="nav-link text-center" href="index.php">
+										<span class="glyphicon glyphicon-home"></span> Home
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-center" href="NovoExercicio.html">
+										<span class="glyphicon glyphicon-floppy-save"></span> Criar exercício
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</aside>
+			<main class="col-12 col-md-10 m-0 p-0 mt-2">
+				<div class="container-fluid">
+					<textarea placeholder="Codigo" id="CodigoEscrever" onchange="set_cores()"></textarea>
+					<form class="form-inline justify-content-center">
+						<div class="input-group">
+							<input type="text" class="form-control" style="width: 61.5vw;" placeholder="Caminho do arquivo">
+						</div>
 
-                                <li><hr/></li>
-
-
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </aside>
-            <main>
-                <div class="container-fluid col-10">
-                    <textarea placeholder="Codigo" id="CodigoEscrever" onchange="set_cores()" class="w-100"></textarea>
-                    <form class="form-inline justify-content-center">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Caminho do arquivo" aria-label="Input group example" aria-describedby="btnGroupAddon">
-                        </div>
-
-                        <select class="form-control" id="sel1">
-                            <option selected disabled hidden>Tamanho da tabela</option>
-                            <option>8</option>
-                            <option>16</option>
-                            <option>32</option>
-                            <option>64</option>
-                        </select>
-                        <button class="btn btn-success" disabled>Salvar</button>
-                    </form>
-                </div>  
-            </main>
-        </div>
-    </div>
+						<select class="form-control" id="sel1">
+							<option selected disabled hidden>Tamanho da tabela</option>
+							<option>8</option>
+							<option>16</option>
+							<option>32</option>
+							<option>64</option>
+						</select>
+						<button class="btn btn-success" disabled>Salvar</button>
+					</form>
+				</div>  
+			</main>
+		</div>
+	</div>
 </body>
 
 </html>
 <script>
-    var Code = document.getElementById("CodigoEscrever");
-    var editor = CodeMirror.fromTextArea(Code, {
-        lineNumbers: true,
-        mode: "text/x-csrc",
-        indentUnit: 4,
-        indentWithTabs: true
-    });
+	var Code = document.getElementById("CodigoEscrever");
+	var editor = CodeMirror.fromTextArea(Code, {
+		lineNumbers: true,
+		mode: "text/x-csrc",
+		indentUnit: 4,
+		indentWithTabs: true
+	});
 </script>

@@ -10,6 +10,7 @@
 
 	<script src="scripts/prototipo.js"></script>
 
+	<script src="frameworks/jquery/jquery-3.3.1.min.js"></script>
 	<script src="frameworks/bootstrap-4.0.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="frameworks/bootstrap-4.0.0/css/bootstrap.min.css">
 	 
@@ -34,7 +35,7 @@
 								
 								<li class="nav-item">
 									<a class="nav-link text-center" href="NovoExercicio.html">
-										<span class="glyphicon glyphicon-floppy-save"></span>Criar exercício
+										<span class="glyphicon glyphicon-floppy-save"></span> Criar exercício
 									</a>
 								</li>
 								
@@ -80,11 +81,12 @@
 						echo "Não carregou o post";
 					}
 				?>
+				
+				<div class="container m-0 p-0 col-12 col-xl-6">
+					
+					<div id="LineNumbers" class="Numbers Dark-Base d-inline float-left"></div>
 
-				<div class="container m-0 ml-1 mt-1 p-0 col-12 col-xl-6">
-					<div id="LineNumbers" class="Numbers Dark-Base col-1"></div>
-
-					<div id="Code" class="Code col-11">
+					<div id="Code" class="Code d-inline">
 						<?php
 							if($exercicio != NULL){
 								/*echo 
@@ -105,7 +107,7 @@
 									echo 
 									'<script>
 										var pre = document.createElement("pre");
-										pre.className = "prettyprint prettyprinted";
+										pre.className = "prettyprint prettyprinted m-0 p-0";
 										pre.id = "linha_" + '.$i.';
 								
 										pre.innerHTML = PR.prettyPrintOne("'.$instrucao.'", "C", true);
@@ -122,12 +124,22 @@
 						?>
 					</div>
 				</div>
+<!-- 
+				<div class="d-none d-xl-block col-xl-1 h-100 m-0 p-0 d-flex justify-content-end"></div>
+					<div class="col-xl-1 h-100 m-0 p-0" style="background-color: black"></div>					
+				</div> -->
 
-				<div class="col-12 m-0 ml-1 mt-1 p-0 col-xl-5">
+				<div class="h-100 m-0 p-0 d-none d-xl-block" style="
+					border-left: solid #b3b3b3 0.1em; 
+					border-right: solid #b3b3b3 0.1em; 
+					width: 1%;"
+				></div>
+
+				<div class="col-12 m-0 p-0 col-xl-5">
 					<table class="table table-striped"> 
 						<thead> 
 							<tr class="MemHeader"> 
-								<th class="table-dark MCol1">Endereço</th> 
+								<th class="table-dark MCol1"><span class="d-none d-sm-block">Endereço</span></th> 
 								<th class="MCol2">Nome da Variavel</th> 
 								<th class="MCol3">Valor</th> 
 								<th class="MCol4">Valor Desreferênciado</th> 
