@@ -53,3 +53,6 @@ dkms.conf
 
 #Project directories
 .vscode
+
+#Prototipo exercícios
+Prototipo/exercicios/*.json

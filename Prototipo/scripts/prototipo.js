@@ -5,7 +5,7 @@ String.prototype.replaceAll = function(str1, str2, ignore){
 
 /* Variáveis globais */
 var linhas_iniciais = 1;
-var endereços_iniciais = 8;
+var endereços_iniciais = 20;
 var indentação_padrão = 4;
 var memórias = [];
 var linha_atual = 1;
@@ -198,7 +198,7 @@ function avançar(){
 	}
 
 	if(mudanças.length != 1 || !comparar_instrução(entradaRequisitos[instrução_atual], mudanças[0])){
-		alert("Mudanças realizadas (ou não) são inválidas\nDica: caracteres são reprsentados entre aspas simples.");
+		alert("A mudança que você fez não bate com o que está indicado no código-fonte, tente ver onde está diferente.\nDica: valores do tipo char (caracteres) são representados entre aspas simples.");
 		return;
 	}
 

@@ -77,6 +77,9 @@
 		direction: ltr;
 	}
 
+	.t-border{
+		text-shadow: -1px 0 #343a40, 0 1px #343a40, 1px 0 #343a40, 0 -1px #343a40;
+	}
 /* Uteis */
 	.flex{
 		display: flex;
@@ -114,18 +117,18 @@
 /* Tabela de Memória */
 
 	.MCol2 input{ 
-		min-width: 9em; 
-		max-width: 9em; 
+		min-width: 7em; 
+		max-width: 7em; 
 	} 
 
 	.MCol3 input{ 
-		min-width: 4em; 
-		max-width: 4em; 
+		min-width: 8em; 
+		max-width: 8em; 
 	} 
 
 	.MCol4 input{ 
-		min-width: 10em; 
-		max-width: 10em; 
+		min-width: 8em; 
+		max-width: 8em; 
 		display: inline-block; 
 	} 
 

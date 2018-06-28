@@ -54,20 +54,55 @@
 			<div class="modal fade" id="Tutorial" tabindex="-1" role="dialog" aria-labelledby="tituloTutorial" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
+						<!-- Criando o cabeçalho do modal -->
 						<div class="modal-header">
-							<h5 class="modal-title" id="tituloTutorial"> Tutorial </h5>
+							<h5 class="modal-title" id="tituloTutorial"> <span class="glyphicon glyphicon-book"></span> Tutorial </h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<div class="modal-body">
-							Alguma coisa no modal
+
+						<!-- TODO: colocar um carrossel para mostrar o tutorial  -->
+						<!-- Criando o corpo do modal -->
+						<div class="modal-body m-0 p-0">
+							<div id="TutorialCarrossel" class="carousel slide" data-ride="carousel" data-interval="false">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<!-- <img class="d-block w-100" src="img/pagina1.png" alt="First slide"> -->
+										<img class="d-block w-100" src="img/Pagina1.png" alt="Campo com arco-iris">
+										<div class="carousel-caption t-border text-light">
+											<h5>C pointer Programing</h5>
+											<p>Este aplicativo tem o objetivo de mostrar como é o funcionamento da memória e como é realizado o acesso a ela, usando a linguagem C e seus ponteiros.</p>
+										</div>
+									</div>
+									<div class="carousel-item">
+										<img class="d-block w-100" src="img/Pagina1.jpg" alt="Second slide">
+										<div class="carousel-caption">
+											<h5 class="t-border">Second slide</h5>
+											<p class="t-border">Qualquer coisa aleatoria</p>
+										</div>
+									</div>
+									<div class="carousel-item">
+										<img class="d-block w-100" src="img/Padrao.jpg" alt="Third slide">
+										<div class="carousel-caption">
+											<h5 class="t-border">Third slide</h5>
+											<p class="t-border">Qualquer coisa aleatoria</p>
+										</div>
+									</div>
+								</div>
+								<a class="carousel-control-prev" href="#TutorialCarrossel" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+								</a>
+								<a class="carousel-control-next" href="#TutorialCarrossel" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</a>
+							</div>
 						</div>
+
+						<!-- Criando o rodapé do modal -->
 						<div class="modal-footer">
-							<button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
-								Close
-							</button>
-							<button class="btn btn-primary">Topper</button>
 						</div>
 					</div>
 				</div>
@@ -88,12 +123,9 @@
 							<tbody id="ListaDeExercicios">
 								<?php
 									$exDir = scandir("./exercicios/");
-									if($exDir == false){
-										echo "Olha a mentira";
-									}
 									foreach($exDir as &$dir){
 										if(substr($dir, -2) === ".c"){
-											$estrelas = 1;
+											$estrelas = rand(1,6);
 											echo "<tr>
 													<td><a href='#' onclick='retornoClick(\"".$dir."\");'>".$dir."</a></td>
 													<td>";
