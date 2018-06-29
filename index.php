@@ -41,7 +41,7 @@
 
 								<li>
 									<button class="btn btn-info w-100" data-toggle="modal" data-target="#Tutorial">
-										Tutorial
+										<span class="glyphicon glyphicon-question-sign"> </span> Tutorial
 									</button>
 								</li>
 							</ul>
@@ -56,7 +56,7 @@
 					<div class="modal-content">
 						<!-- Criando o cabeçalho do modal -->
 						<div class="modal-header">
-							<h5 class="modal-title" id="tituloTutorial"> <span class="glyphicon glyphicon-book"></span> Tutorial </h5>
+							<h5 class="modal-title" id="tituloTutorial"> <span class="glyphicon glyphicon-exclamation-sign"></span> Tutorial </h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>

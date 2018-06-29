@@ -38,17 +38,17 @@
 									<li><hr/></li>
 									
 									<li>
-										<button class="btn btn-info btn-sm w-100 m-1" disabled onclick="voltar()">
-											<span class="glyphicon glyphicon-chevron-left pull-left"> </span> Resolução
+										<button class="btn btn-info btn-sm w-100 m-1 ml-0 mr-0" disabled onclick="voltar()">
+											<span class="glyphicon glyphicon-ok pull-left"> </span> Resolução
 										</button>
 									</li>
 									<li>
-										<button class="btn btn-info btn-sm w-100 m-1" onclick="avançar();">
+										<button class="btn btn-info btn-sm w-100 m-1 ml-0 mr-0" onclick="avançar();">
 											<span class="glyphicon glyphicon-check pull-left"> </span> Verificar
 										</button>
 									</li>
 									<li>
-										<button class="btn btn-danger btn-sm w-100 m-1" onclick="restartTable();">
+										<button class="btn btn-danger btn-sm w-100 m-1 ml-0 mr-0" onclick="restartTable();">
 											<span class="glyphicon glyphicon-repeat"> </span> Resetar
 										</button>
 									</li>

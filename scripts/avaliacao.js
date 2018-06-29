@@ -72,9 +72,10 @@ function __gera_stack_frame(funçãoChamadora, inicioContagem, qntLinhas, cor){
 
 function gera_tabela(){
 	var funções = requisitos["funções"];
-	var cor = 0;
+	var cor = 0; //Atributo hue na escala HSL
 	var qnt_total_de_funções = 0;
 
+	/* Gambi para pegar a quantidade de funções */
 	Object.keys(funções).forEach(função => {
 		qnt_total_de_funções++;
 	});
@@ -83,14 +84,16 @@ function gera_tabela(){
 		var inicio = funções[função]["inicio"];
 		var fim = funções[função]["fim"];
 		__gera_stack_frame(função,inicio,fim-inicio, cor);
-		/* Transformando o atributo cor para hsl */
 		cor += 360/qnt_total_de_funções;
+		habilita_celulas(função, false);
 	});
+
+	habilita_celulas("main", true);
 }
 
-/* Função que desativa as células que possui uma tag igual
-ao nome da função que é passada por parâmetro */
-function desativa_celulas(função){
+/* Função que ativa e desativa as células que possui uma tag
+igual ao nome da função que é passada por parâmetro */
+function habilita_celulas(função, habilita){
 	/* Pega a quantidade de colunas na tabela de memória */
 	var qntColunas = document.getElementById("MemHeader").children.length;
 
@@ -106,7 +109,7 @@ function desativa_celulas(função){
 		/* E para cada colunha na linha e desativa o input */
 		for(let filho = 1; filho < linha.children.length; filho++){
 			this_filho = linha.children[filho];
-			this_filho.children[0].disabled = true;
+			this_filho.children[0].disabled = !habilita;
 		}
 	}
 }
