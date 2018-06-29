@@ -1,8 +1,3 @@
-//https://stackoverflow.com/a/6714233
-String.prototype.replaceAll = function(str1, str2, ignore){
-    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
-}
-
 /* Variáveis globais */
 var linhas_iniciais = 1;
 var endereços_iniciais = 20;
@@ -21,26 +16,6 @@ function Start() {
 function int_to_endereço(i){
 	var hexNum = (i).toString(10).toUpperCase();
 	return ("0000" + hexNum).slice(-4);
-}
-
-/* Função que gera as linhas laterais do código */
-function genLinesNum(qnt) {
-	/* Pega a referência do output e reseta seu valor */
-	console.log(qnt);
-	document.getElementById("LineNumbers").innerHTML = "";
-	for (let i = 1; i <= qnt; i++) {
-		/* Para cada index é criado um div, seu valor é o index */
-		var linha = document.createElement("div");
-		linha.innerHTML = i;
-		linha.id = "numero_" + i;
-
-		/* Insere a nova div como filho do output */
-		document.getElementById("LineNumbers").appendChild(linha);
-	}
-
-	//Identificando a primeira linha.
-	linha_atual = entradaRequisitos[instrução_atual]["linha"];
-	ativar_instrução(linha_atual);
 }
 
 /* Função que gera a tabela de endereços */
@@ -89,10 +64,9 @@ function loadLastTable(){
 }
 
 function restartTable(){
-	console.log("RESETOU D+++");
 	desativar_instrução(linha_atual);
 	console.log(entradaRequisitos);
-	linha_atual = entradaRequisitos[0]["linha"];
+	linha_atual = entradaRequisitos["requisitos"][0]["linha"];
 	console.log(linha_atual);
 	ativar_instrução(linha_atual);
 	instrução_atual = 0;
@@ -197,7 +171,7 @@ function avançar(){
 		}
 	}
 
-	if(mudanças.length != 1 || !comparar_instrução(entradaRequisitos[instrução_atual], mudanças[0])){
+	if(mudanças.length != 1 || !comparar_instrução(entradaRequisitos["requisitos"][instrução_atual], mudanças[0])){
 		alert("A mudança que você fez não bate com o que está indicado no código-fonte, tente ver onde está diferente.\nDica: valores do tipo char (caracteres) são representados entre aspas simples.");
 		return;
 	}
@@ -205,12 +179,12 @@ function avançar(){
 	alert("Muito bem! Para a próxima instrução.");
 	desativar_instrução(linha_atual);
 	instrução_atual++;
-	if(instrução_atual >= entradaRequisitos.length){
+	if(instrução_atual >= entradaRequisitos["requisitos"].length){
 		alert("Parabéns exercício finalizado com sucesso!!\nVocê será redirecionado para a tela de exercícios");
 		window.location.replace("./index.php")
 		return;
 	}
-	linha_atual = entradaRequisitos[instrução_atual]["linha"];
+	linha_atual = entradaRequisitos["requisitos"][instrução_atual]["linha"];
 	ativar_instrução(linha_atual);
 	
 	memórias.push(table);
@@ -219,7 +193,7 @@ function avançar(){
 function voltar(){
 	desativar_instrução(linha_atual);
 	instrução_atual--;
-	linha_atual = entradaRequisitos[instrução_atual]["linha"];
+	linha_atual = entradaRequisitos["requisitos"][instrução_atual]["linha"];
 	ativar_instrução(linha_atual);
 }
 

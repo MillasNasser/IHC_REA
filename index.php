@@ -11,7 +11,7 @@
 
 	
 	<link rel="stylesheet" type="text/css" href="frameworks/gliphycons/bootstrap.css">
-	<script src="scripts/prototipo.js"></script>
+	<script src="scripts/index.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 

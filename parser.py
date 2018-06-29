@@ -35,8 +35,11 @@ def main():
 					valor = valor.split(' ')[1]
 				requisitos.append({"Nome da Variavel": var, "Valor": valor, "linha": instrucoes[i].split('\t')[0]})
 	
-	sys.stdout.write(json.dumps(requisitos))
-	sys.stdout.flush()
+	saida = executavel + ".json"
+	with open(saida, "w") as f:
+		f.write(json.dumps(requisitos))
+	#sys.stdout.write(json.dumps(requisitos))
+	#sys.stdout.flush()
 
 if __name__ == "__main__":
 	main()
