@@ -12,11 +12,11 @@ function start_onload(){
 }
 
 /* Função que gera as linhas laterais do código */
-function insere_numeros_das_linhas(qnt){
+function insere_numeros_das_linhas(quantidade){
 	/* Pega a referência do output e reseta seu valor */
-	console.log(qnt);
 	document.getElementById("LineNumbers").innerHTML = "";
-	for (let i = 1; i <= qnt; i++) {
+
+	for (let i = 1; i <= quantidade; i++) {
 		/* Para cada index é criado um div, seu valor é o index */
 		var linha = document.createElement("div");
 		linha.innerHTML = i;
@@ -83,8 +83,30 @@ function gera_tabela(){
 		var inicio = funções[função]["inicio"];
 		var fim = funções[função]["fim"];
 		__gera_stack_frame(função,inicio,fim-inicio, cor);
-
 		/* Transformando o atributo cor para hsl */
 		cor += 360/qnt_total_de_funções;
 	});
+}
+
+/* Função que desativa as células que possui uma tag igual
+ao nome da função que é passada por parâmetro */
+function desativa_celulas(função){
+	/* Pega a quantidade de colunas na tabela de memória */
+	var qntColunas = document.getElementById("MemHeader").children.length;
+
+	/* Pega todos os elementos que tem a tag de função */
+	var elementos = document.getElementsByClassName(função);
+
+	/* Para cada elemento com a tag função */
+	for(let elemento = 0; elemento < elementos.length; elemento++){
+		
+		/* Pega-se a linha da tabela de memória */
+		linha = elementos[elemento];
+
+		/* E para cada colunha na linha e desativa o input */
+		for(let filho = 1; filho < linha.children.length; filho++){
+			this_filho = linha.children[filho];
+			this_filho.children[0].disabled = true;
+		}
+	}
 }
