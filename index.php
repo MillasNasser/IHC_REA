@@ -40,8 +40,14 @@
 								<li><hr/></li>
 
 								<li>
-									<button class="btn btn-info w-100" data-toggle="modal" data-target="#Tutorial">
+									<button class="btn btn-info w-100 mb-1 mt-1" data-toggle="modal" data-target="#Tutorial">
 										<span class="glyphicon glyphicon-question-sign"> </span> Tutorial
+									</button>
+								</li>
+
+								<li>
+									<button class="btn btn-warning w-100 mb-1 mt-1" onclick="location.replace('sobre.php')">
+										<span class="glyphicon glyphicon-comment"> </span> Sobre
 									</button>
 								</li>
 							</ul>

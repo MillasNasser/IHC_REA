@@ -1,0 +1,1 @@
+{"funções":{"main":{"início":0,"fim":1},"muda":{"início":1,"fim":2}},"requisitos":[{"linha":"7","alterações":[{"Função":"main","Nome da Variável":"a","Valor":"1","ponteiro":false}]},{"linha":"3","alterações":[{"Função":"muda","Nome da Variável":"b","Valor":"main:a","ponteiro":true}]}]}

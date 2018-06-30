@@ -1,1 +1,1 @@
-{"funções":{"main":{"inicio":0,"fim":3}},"requisitos":[{"linha":"4","NomedaVariavel":"n","Valor":"5"},{"linha":"5","NomedaVariavel":"c","Valor":"'5'"}]}
+{"funções":{"main":{"início":0,"fim":2}},"requisitos":[{"linha":"4","alterações":[{"Função":"main","Nome da Variável":"n","Valor":"5","ponteiro":false}]},{"linha":"5","alterações":[{"Função":"main","Nome da Variável":"c","Valor":"'c'","ponteiro":false}]}]}

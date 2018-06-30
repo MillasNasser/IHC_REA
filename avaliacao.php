@@ -38,17 +38,17 @@
 									<li><hr/></li>
 									
 									<li>
-										<button class="btn btn-info btn-sm w-100 m-1 ml-0 mr-0" disabled onclick="voltar()">
+										<button class="btn btn-info w-100 mt-1 mb-1" onclick="resolver()">
 											<span class="glyphicon glyphicon-ok pull-left"> </span> Resolução
 										</button>
 									</li>
 									<li>
-										<button class="btn btn-info btn-sm w-100 m-1 ml-0 mr-0" onclick="avançar();">
+										<button class="btn btn-info w-100 mt-1 mb-1" onclick="avaliar();" accesskey="n">
 											<span class="glyphicon glyphicon-check pull-left"> </span> Verificar
 										</button>
 									</li>
 									<li>
-										<button class="btn btn-danger btn-sm w-100 m-1 ml-0 mr-0" onclick="restartTable();">
+										<button class="btn btn-danger w-100 mt-1 mb-1" onclick="resetar();" accesskey="r">
 											<span class="glyphicon glyphicon-repeat"> </span> Resetar
 										</button>
 									</li>
@@ -59,7 +59,7 @@
 				</aside>
 				<main class="row col-12 col-md-10" style="overflow: auto;">
 					
-					<div class="container m-0 p-0 col-12 col-xl-6">
+					<div class="container m-0 p-0 col-12 col-xl-5">
 						
 						<div id="LineNumbers" class="Numbers Dark-Base d-inline float-left"></div>
 
@@ -72,14 +72,15 @@
 						width: 1%;">
 					</div>
 
-					<div class="col-12 m-0 p-0 col-xl-5">
+					<div class="col-12 m-0 p-0 col-xl-6">
 						<table class="table table-striped"> 
 							<thead>
 								<tr id="MemHeader"> 
-									<th class="table-dark MCol1"><span class="d-none d-sm-block">Endereço</span></th> 
-									<th class="MCol2">Nome da Variável</th> 
-									<th class="MCol3">Valor</th> 
-									<th class="MCol4">Valor no Endereço</th> 
+									<th class="table-dark MCol1">Endereço</th> 
+									<th class="MCol2">Função</th> 
+									<th class="MCol3">Nome da Variável</th> 
+									<th class="MCol4">Valor</th> 
+									<th class="MCol5">Valor no Endereço</th> 
 								</tr> 
 							</thead> 
 							<tbody id="MemTabl"> 

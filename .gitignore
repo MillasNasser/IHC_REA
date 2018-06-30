@@ -56,3 +56,5 @@ dkms.conf
 
 #Prototipo exercícios
 Prototipo/exercicios/*.json
+
+\.vs/

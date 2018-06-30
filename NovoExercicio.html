@@ -12,6 +12,8 @@
 
 	<script src="frameworks/codemirror/lib/codemirror.js"></script>
 	<script src="frameworks/codemirror/mode/clike/clike.js"></script>
+	<script src="frameworks/codemirror/addon/edit/closebrackets.js"></script>
+	<script src="frameworks/codemirror/addon/edit/matchbrackets.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="frameworks/gliphycons/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="frameworks/codemirror/lib/codemirror.css">
@@ -19,7 +21,7 @@
 	<style>
 		.CodeMirror {
 			border: 1px solid #eee;
-			height: 80vh;
+			height: 100vh;
 		}
 	</style>
 </head>
@@ -42,28 +44,34 @@
 										<span class="glyphicon glyphicon-floppy-save"></span> Criar exercício
 									</a>
 								</li>
+
+								<li><hr/></li>
+
+								<li>
+									<form action="" class="form-inline">
+										<div class="input-group w-100 mb-1 mt-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text">
+													<a href="#">
+														<span class="glyphicon glyphicon-level-up"></span>
+													</a>
+												</span>
+											</div>
+											<input type="text" class="form-control" placeholder="Caminho do arquivo">
+										</div>
+										<button class="btn btn-success w-100 mb-1 mt-1">
+											Salvar
+										</button>
+									</form>
+								</li>
 							</ul>
 						</div>
 					</div>
 				</nav>
 			</aside>
-			<main class="col-12 col-md-10 m-0 p-0 mt-2">
-				<div class="container-fluid">
-					<textarea placeholder="Codigo" id="CodigoEscrever" onchange="set_cores()"></textarea>
-					<form class="form-inline justify-content-center">
-						<div class="input-group">
-							<input type="text" class="form-control" style="width: 61.5vw;" placeholder="Caminho do arquivo">
-						</div>
-
-						<select class="form-control" id="sel1">
-							<option selected disabled hidden>Tamanho da tabela</option>
-							<option>8</option>
-							<option>16</option>
-							<option>32</option>
-							<option>64</option>
-						</select>
-						<button class="btn btn-success" disabled>Salvar</button>
-					</form>
+			<main class="col-12 col-md-10 m-0 p-0 h-100">
+				<div class="container-fluid m-0 p-0">
+					<textarea placeholder="Codigo" id="CodigoEscrever"></textarea>
 				</div>  
 			</main>
 		</div>
@@ -77,6 +85,8 @@
 		lineNumbers: true,
 		mode: "text/x-csrc",
 		indentUnit: 4,
-		indentWithTabs: true
+		indentWithTabs: true,
+		autoCloseBrackets: true,
+		matchBrackets: true
 	});
 </script>

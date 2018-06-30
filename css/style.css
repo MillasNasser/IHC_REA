@@ -115,29 +115,28 @@
 	}
 
 /* Tabela de Memória */
-
-	.MCol2 input{ 
+	.MCol3 .border-below{ 
 		min-width: 7em; 
-		max-width: 7em; 
-	} 
+		max-width: 7em;
+	}
 
-	.MCol3 input{ 
-		min-width: 8em; 
-		max-width: 8em; 
-	} 
+	.MCol4 .border-below{ 
+		min-width: 6.5em; 
+		max-width: 6.5em; 
+	}
 
-	.MCol4 input{ 
-		min-width: 8em; 
-		max-width: 8em; 
+	.MCol5 .border-below{ 
+		min-width: 6.5em; 
+		max-width: 6.5em; 
 		display: inline-block; 
 	} 
 
-	.MCol2 input, .MCol3 input, .MCol4 input{
+	.border-below{
 		border-width: 0 0 0.1em 0;
 		border-style: solid;
 		background-color: inherit;
 	}
 
-	.MCol2 input:focus, .MCol3 input:focus, .MCol4 input:focus{
+	.border-below:focus{
 		outline: none;
 	}
