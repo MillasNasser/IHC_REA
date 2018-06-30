@@ -202,22 +202,30 @@ function setar_instrução(linha, habilitar = true){
 }
 
 /* Verifica se as alterações feitas estão certas de acordo com os requisitos. */
-function avaliar() {
+function avaliar(alert_sucesso = true) {
+	if (instrução_atual >= requisitos["requisitos"].length) {
+		alert("Todos os requisitos já foram cumpridos.");
+		return;
+	}
+
 	var memória_alterada = carregar_tabela();
 	var alterações_tabela = _identificar_alterações(memória_alterada);
 	var alterações_requisitos = requisitos["requisitos"][instrução_atual]["alterações"];
 
 	var mensagem_sucesso = "Muito bem! Para a próxima instrução.";
 	var mensagem_erro = "A mudança que você fez não bate com o que está indicado no código-fonte, tente ver onde está diferente.";
-	var mensagem_erro_dica = "valores do tipo char (caracteres) são representados entre aspas simples.";
-
+	var mensagem_erro_dica = "Valores do tipo char (caracteres) são representados entre aspas simples.";
+	
 
 	//Caso trivial. A quantidade de alterações é diferente da quantidade de requisitos.
 	console.log(alterações_tabela.length);
 	console.log(alterações_requisitos.length);
 	if (alterações_tabela.length != alterações_requisitos.length) {
-		alert(mensagem_erro);
-		return;
+		mensagem_erro_dica = "O número de alterações feitas na tabela (" + alterações_tabela.length + ") " +
+		                     "é diferente do número de alterações necessárias.";
+		
+		alert(mensagem_erro + "\nDica: " + mensagem_erro_dica);
+		return false;
 	}
 
 	var acerto;
@@ -270,7 +278,7 @@ function avaliar() {
 		}
 		if (!acerto) { // ou (j == alterações_requisitos.length)
 			alert(mensagem_erro + "\nDica: " + mensagem_erro_dica);
-			return;
+			return false;
 		}
 	}
 
@@ -281,42 +289,102 @@ function avaliar() {
 		alert("Parabéns exercício finalizado com sucesso!!\n" +
 		      "Você será redirecionado para a tela de exercícios");
 		window.location.replace("./index.php")
-		return;
+		return true;
 	}
 
-	setar_instrução(requisitos["requisitos"][instrução_atual]["linha"], );
+	setar_instrução(requisitos["requisitos"][instrução_atual]["linha"]);
 
 	memória = memória_alterada;
 
-
-	alert(mensagem_sucesso);
+	if (alert_sucesso) {
+		alert(mensagem_sucesso);
+	}
 }
 
 /* 
- * Preenche a tabela com os valores corretos.
- * TO-DO: quando uma variável for alterada na mesma função, tem que procurar se ela já
- * existe pra substituir lá. (talvez usar um dicionário pra ajudar?).
+ * Retorna o endereço de uma variável em uma função. -1 se não encontrar.
+ * Se livre == true, retorna o primeiro endereço livre na stackframe da função
+ * caso a variável não seja encontrada.
  */
-function resolver() {
-	var memória = [];
-	for (instrução_atual = 0; instrução_atual < requisitos["requisitos"].length; instrução_atual++) {
-		var alterações_requisitos = requisitos["requisitos"][instrução_atual]["alterações"];
-		for (let j = 0; j < alterações_requisitos.length; j++) {
-			var endereço = requisitos["funções"][alterações_requisitos[j]["Função"]]["início"];
-			var variável = alterações_requisitos[j]["Nome da Variável"];
-			if (Object.keys())
-			atualiza_atributo_no_endereço(
-			    endereço,
-			    AtributoEndereço.NOME_DA_VARIAVEL, alterações_requisitos[j]["Nome da Variável"]
-			);
-			atualiza_atributo_no_endereço(
-			    endereço,
-			    AtributoEndereço.VALOR, alterações_requisitos[j]["Valor"]
-			);
-			//return;
-			requisitos["funções"][alterações_requisitos[j]["Função"]]["início"]++;
+function __encontrar_endereço_variável(memória_atual, variável, função, livre) {
+	var endereço = -1;
+	var início = requisitos["funções"][função]["início"];
+	var fim = requisitos["funções"][função]["fim"];
+
+	for (let i = início; i < fim; i++) {
+		if (memória_atual[i]["Nome da Variável"] == variável) {
+			endereço = i;
+			break;
+		}
+		if (livre && endereço == -1 && memória_atual[i]["Nome da Variável"] == "" && memória_atual[i]["Valor"] == "") {
+			endereço = i;
 		}
 	}
+
+	return endereço;
+}
+
+/* Preenche a tabela com os valores corretos. */
+function resolver() {
+	//Verifica se já foi concluído.
+	if (instrução_atual >= requisitos["requisitos"].length) {
+		alert("Todos os requisitos já foram cumpridos.");
+		return;
+	}
+
+	var memória_atual = carregar_tabela();
+	//var memória_atual = memória;
+
+	console.log("====================\nMemória");
+	console.log(memória_atual);
+	
+	var alterações_requisitos = requisitos["requisitos"][instrução_atual]["alterações"];
+	console.log("Instrução " + instrução_atual);
+	console.log(alterações_requisitos);
+	console.log("====================================");
+
+	//Percorre todas as alterações.
+	for (let i = 0; i < alterações_requisitos.length; i++) {
+		var função = alterações_requisitos[i]["Função"];
+		var variável = alterações_requisitos[i]["Nome da Variável"];
+		var valor = alterações_requisitos[i]["Valor"];
+
+		//Procura o endereço da variável ou um endereço livre.
+		//Em teoria, sempre haverá um endereço disponível, então isso não será checado.
+		var endereço = __encontrar_endereço_variável(memória_atual, variável, função, true);
+
+		//Insere o nome da variável.
+		atualiza_atributo_no_endereço(endereço, AtributoEndereço.NOME_DA_VARIAVEL, variável);
+		//memória_atual[""]
+
+		//Se for uma variável normal, insira o valor diretamente.
+		if (alterações_requisitos[i]["ponteiro"] == false) {
+			atualiza_atributo_no_endereço(endereço, AtributoEndereço.VALOR, valor);
+		}
+
+		//Se for um ponteiro, é preciso atualizar o valor para o endereço da variável que ele aponta.
+		else {
+			let [função_ponteiro, variável_ponteiro] = valor.split(":");
+
+			valor = __encontrar_endereço_variável(memória_atual, variável_ponteiro, função_ponteiro, false);
+
+			//Insere o endereço da variável que o ponteiro aponta.
+			atualiza_atributo_no_endereço(endereço, AtributoEndereço.VALOR, valor);
+
+			//Atualiza o campo Valor no Endereço
+			atualiza_valor_do_ponteiro(endereço);
+		}
+
+		memória_atual = carregar_tabela();
+
+	}
+
+	//memória = carregar_tabela();
+
+	avaliar(false);
+
+	//instrução_atual++;
+	//setar_instrução(requisitos["requisitos"][instrução_atual]["linha"], true);
 } 
 
 function retorna_atributo_no_endereço(endereço, atributo_endereço) {
@@ -361,5 +429,5 @@ function atualiza_valor_do_ponteiro(endereço) {
 			AtributoEndereço.VALOR
 		);
 	
-	linha.children[atributo_endereço].innerHTML = valor_na_referência;
+	linha.children[AtributoEndereço.VALOR_NO_ENDERECO].innerHTML = valor_na_referência;
 }

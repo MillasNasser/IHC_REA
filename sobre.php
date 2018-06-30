@@ -103,22 +103,6 @@
 					</div>
 
 				</div>
-
-				<div class="d-flex justify-content-around mb-5 c-12">
-					<div class="card w-25 p-2">
-						<img class="card-img-top" src="https://scontent.fjdf1-1.fna.fbcdn.net/v/t1.0-9/21430441_2037162566512538_9102342453593382781_n.jpg?_nc_cat=0&_nc_eui2=AeFEOpbdM3jja0tSHSzoQbqyfPP3wOXuZOSUJcxcPtFb4LK0cotUZ5PEX-Lkpfo3qNlb26vAazT2srbDWu5c5UMg9NTqDHQtA0VuXwZDOSM_6Q&oh=769d4feb8ed36ce9282c84d9ea5b1764&oe=5BA23506">
-						<h5 class="card-title">Millas Násser R. Avelar</h5>
-						<h6 class="card-subtitle mb-2 text-muted">Cursando Ciência da computação</h6>
-						<p class="card-text">Gosta de aprender coisas novas, joga de vez ou outra e gosta de programar em C</p>
-					</div>
-
-					<div class="card w-25 p-2">
-						<img class="card-img-top" src="https://scontent.fjdf1-1.fna.fbcdn.net/v/t1.0-9/13310595_1022963917790033_3405928469921581899_n.jpg?_nc_cat=0&_nc_eui2=AeFYK1rpioC8APx6tdnZhVghBEnjz-aPvR6QsZP9a1QsdgsRj41iIP47n1A7L1UDmmEcqJGcddB3efLr8tMfRthDdbm1D8Zppzjx4NHy0SOvIw&oh=6c4a6a1526625066573dcd9652358c3e&oe=5BE1D9D4">
-						<h5 class="card-title">Paulo H. Tobias</h5>
-						<h6 class="card-subtitle mb-2 text-muted">Cursando Ciência da computação</h6>
-						<p class="card-text">Gosta de programar em C, e joga muito</p>
-					</div>
-				</div>
 			</main>
 		</div>
 	</div>
