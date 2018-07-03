@@ -1,3 +1,12 @@
+/* Classes */
+class Ponteiro{
+	constructor(nome, variavel, endereço){
+		this.ponteiro = nome;
+		this.referencia = variavel;
+		this.endereço = endereço;
+	}
+}
+
 /* Enumerações */
 var AtributoEndereço = {
 	ENDERECO: 0,
@@ -13,12 +22,13 @@ var linha_atual = 1;
 var instrução_atual = 0;
 var memória = [];
 
+var ponteiros;
+
 /* Script do javascript carrega antes do html, 
 logo é necessário essa função carregar logo após a página 
 ser carregada. Assim ela é chamada onload() */
 function start_onload(){
 	gera_tabela();
-	carregar_tabela();
 }
 
 function resetar(){
@@ -118,6 +128,7 @@ function gera_tabela(){
 	});
 
 	memória = carregar_tabela();
+	ponteiros = [];
 }
 
 /* Gera um vetor com todos os dados atuais da tabela na função atual. */
@@ -260,6 +271,30 @@ function avaliar(alert_sucesso = true) {
 							                     "' aponta uma variável em outra função.";
 							break;
 						}
+
+						var achou = false;
+
+						for(let i = 0; i < ponteiros.length; i++) {
+							var ponteiro = ponteiros[i];
+							if(ponteiro.ponteiro == alterações_requisitos[j]["Função"] + ":" + alterações_requisitos[j]["Nome da Variável"]){
+								ponteiro.referencia = alterações_requisitos[j]["Valor"];
+								achou = true;
+								break;
+							}
+						}
+
+						if(achou == false){
+							ponteiros.push(new Ponteiro(
+								alterações_requisitos[j]["Função"] + ":" + alterações_requisitos[j]["Nome da Variável"],
+								alterações_requisitos[j]["Valor"],
+								__encontrar_endereço_variável(
+									memória_alterada, 
+									alterações_requisitos[j]["Nome da Variável"],
+									alterações_requisitos[j]["Função"], 
+									false
+								)
+							));
+						}
 					}
 
 					console.log(alterações_tabela[i]["Nome da Variável"] + " == " + alterações_requisitos[j]["Nome da Variável"]);
@@ -278,16 +313,27 @@ function avaliar(alert_sucesso = true) {
 		}
 		if (!acerto) { // ou (j == alterações_requisitos.length)
 			alert(mensagem_erro + "\nDica: " + mensagem_erro_dica);
+			ponteiros.forEach(elemento=>{
+				atualiza_valor_do_ponteiro(elemento.endereço);
+			});
 			return false;
 		}
 	}
 
 	setar_instrução(requisitos["requisitos"][instrução_atual]["linha"], false);
 	
+	/*console.log("+++++++++++ Tabela Ponteiros +++++++++++++++");
+	console.log(ponteiros);
+	console.log("++++++++++++++++++++++++++++++++++++++++++++");*/
+
+	ponteiros.forEach(elemento=>{
+		atualiza_valor_do_ponteiro(elemento.endereço);
+	});
+
 	instrução_atual++;
 	if (instrução_atual >= requisitos["requisitos"].length) {
 		alert("Parabéns exercício finalizado com sucesso!!\n" +
-		      "Você será redirecionado para a tela de exercícios");
+		"Você será redirecionado para a tela de exercícios");
 		window.location.replace("./index.php")
 		return true;
 	}

@@ -65,41 +65,14 @@
 				</div>
 
 				<div class="c-12 flex-md-column flex-row justify-content-center ml-2 mb-5">
-					<label class="font-weight-bold mb-0">O que não é suportado pelo aplicativo:</label>
-
+					<label class="font-weight-bold mb-0">O que não é suportado pelo aplicativo ainda:</label>
 					<div class="d-flex">
-						<div class="card text-white bg-danger mb-3 mr-3" style="max-width: 18rem;">
-							<div class="card-header">
-								<h5>Recursão</h5>
-							</div>
-							<div class="card-body">
-								<p class="card-text">Devido ao fato de não saber quantas iterações serão realizadas, não foi possível dar suporte a essa funcionalidade</p>
-							</div>
-						</div>
-						<div class="card text-white bg-danger mb-3 mr-3" style="max-width: 18rem;">
-							<div class="card-header">
-								<h5>Variável Global</h5>
-							</div>
-							<div class="card-body">
-								
-								<p class="card-text">Na linguagem C, por padrão, ao incluir uma biblioteca há muitas variáveis globais. Ou seja, seria muito trabalhoso encontrar as variáveis que foram definidas pelo programa.</p>
-							</div>
-						</div>
-						<div class="card text-white bg-danger mb-3 mr-3" style="max-width: 18rem;">
-							<div class="card-header">Header</div>
-							<div class="card-body">
-								<h5 class="card-title">Danger card title</h5>
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-							</div>
-						</div>
-						<div class="card text-white bg-danger mb-3 mr-3" style="max-width: 18rem;">
-							<div class="card-header">Header</div>
-							<div class="card-body">
-								<h5 class="card-title">Danger card title</h5>
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-							</div>
-						</div>
-
+						<ul>
+							<li>Variáveis globais</li>
+							<li>Funções recursivas</li>
+							<li>Structs</li>
+							<li>Outros tópicos fora do escopo de AED's 1</li>
+						</ul>
 					</div>
 
 				</div>
